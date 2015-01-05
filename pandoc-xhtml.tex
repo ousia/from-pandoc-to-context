@@ -3,10 +3,13 @@
     \xmlsetsetup{\xmldocument}{html|body|head|h1|h2|h3|p|span|em|q|b|code|pre|strong|a|ul|ol|li|}{xml:*}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteRef']}{xml:footnote}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteBack']}{xml:nothing}
+    \xmlsetsetup{\xmldocument}{a[text()='↩']}{xml:nothing}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: lower-alpha']}{xml:lalist}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: upper-alpha']}{xml:ualist}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: lower-roman']}{xml:lrlist}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: upper-roman']}{xml:urlist}
+    %~ \xmlsetsetup{\xmldocument}{ol[@start='list-style-type: upper-roman']}{xml:urlist}
+    %~ \startitemize[n][start=3]
 \stopxmlsetups
 
 \xmlregistersetup{xml:pandoc}
@@ -41,11 +44,11 @@
 \stopxmlsetups
 
 \startxmlsetups xml:span
-   \dontleavehmode{\language[\xmlatt{#1}{lang}] \xmlflush{#1}}
+   \begingroup\language[\xmlatt{#1}{lang}]\xmlflush{#1}\endgroup
 \stopxmlsetups
 
 \startxmlsetups xml:em
-    \dontleavehmode{\em \xmlflush{#1}}
+    \begingroup\em \xmlflush{#1}\endgroup
 \stopxmlsetups
 
 \startxmlsetups xml:q
@@ -65,7 +68,7 @@
 \stopxmlsetups
 
 \startxmlsetups xml:strong
-    \dontleavehmode{\ss\xmlflush{#1}}
+    \begingroup\ss\xmlflush{#1}\endgroup
 \stopxmlsetups
 
 \startxmlsetups xml:a
