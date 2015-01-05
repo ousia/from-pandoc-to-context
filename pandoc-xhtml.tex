@@ -1,6 +1,6 @@
 \startxmlsetups xml:pandoc
     \xmlsetsetup{\xmldocument}{*}{-}
-    \xmlsetsetup{\xmldocument}{html|body|head|h1|h2|h3|p|span|em|q|b|code|pre|strong|a|ul|ol|li|}{xml:*}
+    \xmlsetsetup{\xmldocument}{html|body|head|h1|h2|h3|h4|h5|h6|p|span|em|q|b|code|pre|strong|a|ul|ol|li|}{xml:*}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteRef']}{xml:footnote}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteBack']}{xml:nothing}
     \xmlsetsetup{\xmldocument}{a[text()='↩']}{xml:nothing}
@@ -28,15 +28,27 @@
 \stopxmlsetups
 
 \startxmlsetups xml:h1
-    \title{\xmlflush{#1}}
+    \chapter{\xmlflush{#1}}
 \stopxmlsetups
 
 \startxmlsetups xml:h2
-    \subject{\xmlflush{#1}}
+    \section{\xmlflush{#1}}
 \stopxmlsetups
 
 \startxmlsetups xml:h3
-    \subsubject{\xmlflush{#1}}
+    \subsection{\xmlflush{#1}}
+\stopxmlsetups
+
+\startxmlsetups xml:h4
+    \subsubsection{\xmlflush{#1}}
+\stopxmlsetups
+
+\startxmlsetups xml:h5
+    \subsubsubsection{\xmlflush{#1}}
+\stopxmlsetups
+
+\startxmlsetups xml:h6
+    \subsubsubsubsection{\xmlflush{#1}}
 \stopxmlsetups
 
 \startxmlsetups xml:p
