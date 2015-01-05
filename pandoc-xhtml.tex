@@ -1,6 +1,7 @@
 \startxmlsetups xml:pandoc
     \xmlsetsetup{\xmldocument}{*}{-}
-    \xmlsetsetup{\xmldocument}{html|body|head|h1|h2|h3|h4|h5|h6|p|blockquote|span|em|q|b|code|pre|strong|a|ul|ol|li|hr}{xml:*}
+    \xmlsetsetup{\xmldocument}{html|body|head|h1|h2|h3|h4|h5|h6|p|blockquote|span|em|q|b|pre|code|strong|a|ul|ol|li|hr|br|sup|sub}{xml:*}
+    \xmlsetsetup{\xmldocument}{div[@id='header']}{xml:titlepage}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteRef']}{xml:footnote}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteBack']}{xml:nothing}
     \xmlsetsetup{\xmldocument}{a[text()='↩']}{xml:nothing}
@@ -24,6 +25,10 @@
 \stopxmlsetups
 
 \startxmlsetups xml:head
+    \xmlflush{#1}
+\stopxmlsetups
+
+\startxmlsetups xml:titlepage
     \xmlflush{#1}
 \stopxmlsetups
 
@@ -72,19 +77,20 @@
 \stopxmlsetups
 
 \startxmlsetups xml:b
-    \dontleavehmode{\bf\xmlflush{#1}}
+    \begingroup\bf\xmlflush{#1}\endgroup
+\stopxmlsetups
+
+\startxmlsetups xml:pre
+    %~ \xmldisplayverbatim{#1}
+    \xmlflush{#1}\par
 \stopxmlsetups
 
 \startxmlsetups xml:code
     \xmlinlineverbatim{#1}
 \stopxmlsetups
 
-\startxmlsetups xml:pre
-    \xmldisplayverbatim{#1}
-\stopxmlsetups
-
 \startxmlsetups xml:strong
-    \begingroup\ss\xmlflush{#1}\endgroup
+    \begingroup\bf\xmlflush{#1}\endgroup
 \stopxmlsetups
 
 \startxmlsetups xml:a
@@ -140,7 +146,19 @@
 \stopxmlsetups
 
 \startxmlsetups xml:hr
-    \hrule
+    \blank\hrule\blank
+\stopxmlsetups
+
+\startxmlsetups xml:br
+     \\
+\stopxmlsetups
+
+\startxmlsetups xml:sup
+     \high{\xmlflush{#1}}
+\stopxmlsetups
+
+\startxmlsetups xml:sub
+     \low{\xmlflush{#1}}
 \stopxmlsetups
 
 \def\url#1{\begingroup\tt#1\endgroup}
