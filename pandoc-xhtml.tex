@@ -1,6 +1,6 @@
 \startxmlsetups xml:pandoc
     \xmlsetsetup{\xmldocument}{*}{-}
-    \xmlsetsetup{\xmldocument}{html|body|head|h1|h2|h3|h4|h5|h6|p|span|em|q|b|code|pre|strong|a|ul|ol|li|}{xml:*}
+    \xmlsetsetup{\xmldocument}{html|body|head|h1|h2|h3|h4|h5|h6|p|blockquote|span|em|q|b|code|pre|strong|a|ul|ol|li|}{xml:*}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteRef']}{xml:footnote}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteBack']}{xml:nothing}
     \xmlsetsetup{\xmldocument}{a[text()='↩']}{xml:nothing}
@@ -53,6 +53,10 @@
 
 \startxmlsetups xml:p
     \xmlflush{#1}\par
+\stopxmlsetups
+
+\startxmlsetups xml:blockquote
+    \startnarrow\xmlflush{#1}\stopnarrow
 \stopxmlsetups
 
 \startxmlsetups xml:span
