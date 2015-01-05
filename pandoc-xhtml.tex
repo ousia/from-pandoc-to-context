@@ -1,0 +1,121 @@
+\startxmlsetups xml:pandoc
+    \xmlsetsetup{\xmldocument}{*}{-}
+    \xmlsetsetup{\xmldocument}{html|body|head|h1|h2|h3|p|span|em|q|b|code|pre|strong|a|ul|ol|li|}{xml:*}
+    \xmlsetsetup{\xmldocument}{a[@class='footnoteRef']}{xml:footnote}
+    \xmlsetsetup{\xmldocument}{a[@class='footnoteBack']}{xml:nothing}
+    \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: lower-alpha']}{xml:lalist}
+    \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: upper-alpha']}{xml:ualist}
+    \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: lower-roman']}{xml:lrlist}
+    \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: upper-roman']}{xml:urlist}
+\stopxmlsetups
+
+\xmlregistersetup{xml:pandoc}
+
+\startxmlsetups xml:html
+    \mainlanguage[\xmlatt{#1}{lang}]
+    \xmlflush{#1}
+\stopxmlsetups
+
+\startxmlsetups xml:body
+    \xmlflush{#1}
+\stopxmlsetups
+
+\startxmlsetups xml:head
+    \xmlflush{#1}
+\stopxmlsetups
+
+\startxmlsetups xml:h1
+    \title{\xmlflush{#1}}
+\stopxmlsetups
+
+\startxmlsetups xml:h2
+    \subject{\xmlflush{#1}}
+\stopxmlsetups
+
+\startxmlsetups xml:h3
+    \subsubject{\xmlflush{#1}}
+\stopxmlsetups
+
+\startxmlsetups xml:p
+    \xmlflush{#1}\par
+\stopxmlsetups
+
+\startxmlsetups xml:span
+   \dontleavehmode{\language[\xmlatt{#1}{lang}] \xmlflush{#1}}
+\stopxmlsetups
+
+\startxmlsetups xml:em
+    \dontleavehmode{\em \xmlflush{#1}}
+\stopxmlsetups
+
+\startxmlsetups xml:q
+    \quotation{\xmlflush{#1}}
+\stopxmlsetups
+
+\startxmlsetups xml:b
+    \dontleavehmode{\bf\xmlflush{#1}}
+\stopxmlsetups
+
+\startxmlsetups xml:code
+    \xmlinlineverbatim{#1}
+\stopxmlsetups
+
+\startxmlsetups xml:pre
+    \xmldisplayverbatim{#1}
+\stopxmlsetups
+
+\startxmlsetups xml:strong
+    \dontleavehmode{\ss\xmlflush{#1}}
+\stopxmlsetups
+
+\startxmlsetups xml:a
+    \dontleavehmode\url{\xmlflush{#1}}
+\stopxmlsetups
+
+\startxmlsetups xml:footnote
+    \startfootnote
+    \xmlfirst{main}{div[@class='footnotes']/ol/li[@id=string.sub('\xmlatt{#1}{href}',2)]}
+    \stopfootnote
+\stopxmlsetups
+
+\startxmlsetups xml:ol
+    \startitemize[n]
+        \xmlflush{#1}
+    \stopitemize
+\stopxmlsetups
+
+\startxmlsetups xml:lalist
+    \startitemize[a]
+        \xmlflush{#1}
+    \stopitemize
+\stopxmlsetups
+
+\startxmlsetups xml:ualist
+    \startitemize[A]
+        \xmlflush{#1}
+    \stopitemize
+\stopxmlsetups
+
+\startxmlsetups xml:lrlist
+    \startitemize[r]
+        \xmlflush{#1}
+    \stopitemize
+\stopxmlsetups
+
+\startxmlsetups xml:urlist
+    \startitemize[R]
+        \xmlflush{#1}
+    \stopitemize
+\stopxmlsetups
+
+\startxmlsetups xml:ul
+    \startitemize
+        \xmlflush{#1}
+    \stopitemize
+\stopxmlsetups
+
+\startxmlsetups xml:li
+    \startitem
+        \xmlflush{#1}
+    \stopitem
+\stopxmlsetups
