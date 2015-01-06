@@ -10,7 +10,7 @@ It is still *work in progress*. The main issue that I’m experiencing is the fo
 
 I have some experience with XML and ConTeXt MkIV. Only as an average user, not as a programer (I cannot code myself). The way ConTeXt deals with XML is totally new to me. I have to learn first how it works.
 
-Of course, feel free to fork and send pull requests with patches or new code.
+Of course, feel free to [fork the project](https://github.com/ousia/context-environments/fork) and send pull requests with patches or new code.
 
 ## Other environments
 
