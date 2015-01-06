@@ -3,6 +3,7 @@
     \xmlsetsetup{\xmldocument}{html|body|head|h1|h2|h3|h4|h5|h6|p|blockquote|span|em|q|b|pre|code|strong|a|ul|ol|li|hr|br|sup|sub}{xml:*}
     \xmlsetsetup{\xmldocument}{div[@id='header']}{xml:titlepage}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteRef']}{xml:footnote}
+    \xmlsetsetup{\xmldocument}{a[@class='uri']}{xml:autolink}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteBack']}{xml:nothing}
     \xmlsetsetup{\xmldocument}{a[text()='↩']}{xml:nothing}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: decimal']}{xml:ol}
@@ -87,7 +88,8 @@
 \stopxmlsetups
 
 \startxmlsetups xml:code
-    \xmlinlineverbatim{#1}
+    \begingroup\tt\xmlflush{#1}\endgroup
+     %~ \xmlinlineverbatim{#1}
 \stopxmlsetups
 
 \startxmlsetups xml:strong
@@ -95,7 +97,11 @@
 \stopxmlsetups
 
 \startxmlsetups xml:a
-    \dontleavehmode\url{\xmlflush{#1}}
+    \href{\xmlatt{#1}{href}}{\xmlflush{#1}}
+\stopxmlsetups
+
+\startxmlsetups xml:autolink
+    \url{\xmlflush{#1}}
 \stopxmlsetups
 
 \startxmlsetups xml:footnote
@@ -183,4 +189,6 @@
      \low{\xmlflush{#1}}
 \stopxmlsetups
 
-\def\url#1{\begingroup\tt#1\endgroup}
+
+\def\url#1{\begingroup\tt\goto{\hyphenatedurl{#1}}[url(#1)]\endgroup}
+\def\href#1#2{\goto{#2} [url(#1)]}
