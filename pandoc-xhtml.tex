@@ -5,6 +5,7 @@
     \xmlsetsetup{\xmldocument}{a[@class='footnoteRef']}{xml:footnote}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteBack']}{xml:nothing}
     \xmlsetsetup{\xmldocument}{a[text()='↩']}{xml:nothing}
+    \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: decimal']}{xml:ol}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: lower-alpha']}{xml:lalist}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: upper-alpha']}{xml:ualist}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: lower-roman']}{xml:lrlist}
@@ -105,33 +106,53 @@
 \stopxmlsetups
 
 \startxmlsetups xml:ol
-    \startitemize[n]
+\doifnumberelse{\xmlatt{#1}{start}}
+    {\startitemize[n][start=\xmlatt{#1}{start}]
         \xmlflush{#1}
-    \stopitemize
+    \stopitemize}
+    {\startitemize[n]
+        \xmlflush{#1}
+    \stopitemize}
 \stopxmlsetups
 
 \startxmlsetups xml:lalist
-    \startitemize[a]
+\doifnumberelse{\xmlatt{#1}{start}}
+    {\startitemize[a][start=\xmlatt{#1}{start}]
         \xmlflush{#1}
-    \stopitemize
+    \stopitemize}
+    {\startitemize[a]
+        \xmlflush{#1}
+    \stopitemize}
 \stopxmlsetups
 
 \startxmlsetups xml:ualist
-    \startitemize[A]
+\doifnumberelse{\xmlatt{#1}{start}}
+    {\startitemize[A][start=\xmlatt{#1}{start}]
         \xmlflush{#1}
-    \stopitemize
+    \stopitemize}
+    {\startitemize[A]
+        \xmlflush{#1}
+    \stopitemize}
 \stopxmlsetups
 
 \startxmlsetups xml:lrlist
-    \startitemize[r]
+\doifnumberelse{\xmlatt{#1}{start}}
+    {\startitemize[r][start=\xmlatt{#1}{start}]
         \xmlflush{#1}
-    \stopitemize
+    \stopitemize}
+    {\startitemize[r]
+        \xmlflush{#1}
+    \stopitemize}
 \stopxmlsetups
 
 \startxmlsetups xml:urlist
-    \startitemize[R]
+\doifnumberelse{\xmlatt{#1}{start}}
+    {\startitemize[R][start=\xmlatt{#1}{start}]
         \xmlflush{#1}
-    \stopitemize
+    \stopitemize}
+    {\startitemize[R]
+        \xmlflush{#1}
+    \stopitemize}
 \stopxmlsetups
 
 \startxmlsetups xml:ul
