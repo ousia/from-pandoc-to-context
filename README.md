@@ -6,7 +6,7 @@ This project aims to create environments that allow ConTeXt to directly typeset 
 
 Right now, only `pandoc-xhtml.tex` is available.
 
-It is still *work in progress*. The main issue that I’m experiencing is the following: the manual---[_Dealing with XML in ConTeXt MkIV_](http://pragma-ade.com/show-man-44.htm)---is all Greek to me.
+It is still *work in progress*. The main issue that I’m experiencing is the following: the manual—[Dealing with XML in ConTeXt MkIV](http://pragma-ade.com/show-man-44.htm)—is all Greek to me.
 
 Sorry, 
 
