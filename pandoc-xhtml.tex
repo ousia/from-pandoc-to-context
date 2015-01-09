@@ -2,7 +2,8 @@
     \xmlsetsetup{\xmldocument}{*}{-}
     \xmlsetsetup{\xmldocument}{html|body|head|h1|h2|h3|h4|h5|h6|p|blockquote|span|em|q|b|pre|code|strong|a|ul|ol|li|hr|br|sup|sub}{xml:*}
     \xmlsetsetup{\xmldocument}{div[@id='header']}{xml:titlepage}
-    \xmlsetsetup{\xmldocument}{a[@class='footnoteRef']}{xml:footnote}
+    \xmlsetsetup{\xmldocument}{a[@class='footnoteRef']}{xml:footnote:ref}
+    \xmlsetsetup{\xmldocument}{div[@class='footnotes']}{}
     \xmlsetsetup{\xmldocument}{a[@class='uri']}{xml:autolink}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteBack']}{xml:nothing}
     \xmlsetsetup{\xmldocument}{a[text()='↩']}{xml:nothing}
@@ -11,8 +12,6 @@
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: upper-alpha']}{xml:ualist}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: lower-roman']}{xml:lrlist}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: upper-roman']}{xml:urlist}
-    %~ \xmlsetsetup{\xmldocument}{ol[@start='list-style-type: upper-roman']}{xml:urlist}
-    %~ \startitemize[n][start=3]
 \stopxmlsetups
 
 \xmlregistersetup{xml:pandoc}
@@ -59,7 +58,13 @@
 \stopxmlsetups
 
 \startxmlsetups xml:p
-    \xmlflush{#1}\par
+    \xmldoifnotselfempty {#1} {
+        \dontleavehmode
+        \ignorespaces
+        \xmlflush{#1}
+        \removeunwantedspaces
+    }
+    \par
 \stopxmlsetups
 
 \startxmlsetups xml:blockquote
@@ -104,12 +109,24 @@
     \url{\xmlflush{#1}}
 \stopxmlsetups
 
-\startxmlsetups xml:footnote
-    \startfootnote
-    \xmlfirst{main}{div[@class='footnotes']/ol/li[@id=string.sub('\xmlatt{#1}{href}',2)]}
-    \stopfootnote
-    %~ \xmltext{#1}{q}
+\startxmlsetups xml:footnote:set
+     \startfootnote
+         \xmlflush{#1}
+     \stopfootnote
 \stopxmlsetups
+
+\startluacode
+     local gsub = string.gsub
+     function xml.expressions.idstring(str)
+         return type(str) == "string" and gsub(str,"^#","") or ""
+     end
+\stopluacode
+
+\startxmlsetups xml:footnote:ref
+    \xmlfilter{main}{div[@class='footnotes']/ol/li[@id=idstring('\xmlatt{#1}{href}')]/command(xml:footnote:set)}
+\stopxmlsetups
+
+
 
 \startxmlsetups xml:ol
 \doifnumberelse{\xmlatt{#1}{start}}
