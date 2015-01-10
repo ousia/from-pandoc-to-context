@@ -1,7 +1,8 @@
 \startxmlsetups xml:pandoc
     \xmlsetsetup{\xmldocument}{*}{-}
-    \xmlsetsetup{\xmldocument}{html|body|head|h1|h2|h3|h4|h5|h6|p|blockquote|span|em|q|b|pre|code|strong|a|ul|ol|li|hr|br|sup|sub}{xml:*}
+    \xmlsetsetup{\xmldocument}{html|body|head|div|h1|h2|h3|h4|h5|h6|p|blockquote|span|em|q|b|pre|code|strong|a|ul|ol|li|hr|br|sup|sub}{xml:*}
     \xmlsetsetup{\xmldocument}{div[@id='header']}{xml:titlepage}
+    \xmlsetsetup{#1}{(div|span)[@lang]}{xml:lang}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteRef']}{xml:footnote:ref}
     \xmlsetsetup{\xmldocument}{div[@class='footnotes']}{}
     \xmlsetsetup{\xmldocument}{a[@class='uri']}{xml:autolink}
@@ -31,6 +32,17 @@
 
 \startxmlsetups xml:titlepage
     \xmlflush{#1}
+\stopxmlsetups
+
+\startxmlsetups xml:div
+    \xmlflush{#1}
+\stopxmlsetups
+
+\startxmlsetups xml:lang
+     \begingroup
+         \language[\xmlatt{#1}{lang}]
+         \xmlsetup{#1}{xml:\xmltag{#1}}
+     \endgroup
 \stopxmlsetups
 
 \startxmlsetups xml:h1
