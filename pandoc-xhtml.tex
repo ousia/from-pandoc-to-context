@@ -1,13 +1,21 @@
 \startxmlsetups xml:pandoc
     \xmlsetsetup{\xmldocument}{*}{-}
     \xmlsetsetup{\xmldocument}{html|body|head|div|h1|h2|h3|h4|h5|h6|p|blockquote|span|em|q|b|pre|code|strong|a|ul|ol|li|hr|br|sup|sub}{xml:*}
+    \xmlsetsetup{\xmldocument}{(div|span)[@lang]}{xml:lang}
     \xmlsetsetup{\xmldocument}{div[@id='header']}{xml:titlepage}
-    \xmlsetsetup{#1}{(div|span)[@lang]}{xml:lang}
+    \xmlsetsetup{\xmldocument}{div[@class='rights']}{xml:rights}
+    \xmlsetsetup{\xmldocument}{div[@id='dedication']}{xml:dedication}
+    \xmlsetsetup{\xmldocument}{div[@id='epigraph']}{xml:epigraph}
+    \xmlsetsetup{\xmldocument}{div[@id='frontmatter']}{xml:frontmatter}
+    \xmlsetsetup{\xmldocument}{div[@id='bodymatter']}{xml:bodymatter}
+    \xmlsetsetup{\xmldocument}{[@id='colophon']}{xml:colophon}
+    \xmlsetsetup{\xmldocument}{[@class='signature-date']}{xml:signaturedate}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteRef']}{xml:footnote:ref}
     \xmlsetsetup{\xmldocument}{div[@class='footnotes']}{}
     \xmlsetsetup{\xmldocument}{a[@class='uri']}{xml:autolink}
-    \xmlsetsetup{\xmldocument}{a[@class='footnoteBack']}{xml:nothing}
-    \xmlsetsetup{\xmldocument}{a[text()='↩']}{xml:nothing}
+    \xmlsetsetup{\xmldocument}{a[@class='footnoteBack']}{}
+    \xmlsetsetup{\xmldocument}{div[@class='hidden']/h1}{}
+    \xmlsetsetup{\xmldocument}{a[text()='↩']}{}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: decimal']}{xml:ol}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: lower-alpha']}{xml:lalist}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: upper-alpha']}{xml:ualist}
@@ -31,7 +39,56 @@
 \stopxmlsetups
 
 \startxmlsetups xml:titlepage
+    \startfirstmatter
     \xmlflush{#1}
+\stopxmlsetups
+
+\startxmlsetups xml:rights
+    \startcopyrightmakeup
+    \xmlflush{#1}
+    \stopcopyrightmakeup
+\stopxmlsetups
+
+\startxmlsetups xml:dedication
+    \startdedicationmakeup
+    \xmlflush{#1}
+    \stopdedicationmakeup
+\stopxmlsetups
+
+\startxmlsetups xml:epigraph
+    \startepigraphmakeup
+    \xmlflush{#1}
+    \stopepigraphmakeup
+\stopxmlsetups
+
+\startxmlsetups xml:frontmatter
+    \title{Sumario}\placelist[chapter]
+    \stopfirstmatter
+
+    \startfrontmatter
+    \xmlflush{#1}
+\stopxmlsetups
+
+\startxmlsetups xml:bodymatter
+    \stopfrontmatter
+
+    \startbodymatter
+    \xmlflush{#1}
+\stopxmlsetups
+
+\startxmlsetups xml:colophon
+    \stopbodymatter
+    \startmode[notasalpie]
+    \startbackmatter
+    \chapter{Notas}
+
+    \placefootnotes
+    \stopbackmatter
+    \stopmode
+
+    \startcolophonmakeup
+    \xmlflush{#1}
+    \stopcolophonmakeup
 \stopxmlsetups
 
 \startxmlsetups xml:div
@@ -83,8 +140,14 @@
     \startnarrow\xmlflush{#1}\stopnarrow
 \stopxmlsetups
 
+\startxmlsetups xml:signaturedate
+    \startalign[flushright]
+    \xmlflush{#1}
+    \stopalign
+\stopxmlsetups
+
 \startxmlsetups xml:span
-   \begingroup\language[\xmlatt{#1}{lang}]\xmlflush{#1}\endgroup
+   \xmlflush{#1}
 \stopxmlsetups
 
 \startxmlsetups xml:em
@@ -217,7 +280,6 @@
 \startxmlsetups xml:sub
      \low{\xmlflush{#1}}
 \stopxmlsetups
-
 
 \def\url#1{\begingroup\tt\goto{\hyphenatedurl{#1}}[url(#1)]\endgroup}
 \def\href#1#2{\goto{#2} [url(#1)]}
