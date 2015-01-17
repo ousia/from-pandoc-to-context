@@ -2,19 +2,22 @@
     \xmlsetsetup{\xmldocument}{*}{-}
     \xmlsetsetup{\xmldocument}{html|body|head|div|h1|h2|h3|h4|h5|h6|p|blockquote|span|em|q|b|pre|code|strong|a|ul|ol|li|hr|br|sup|sub}{xml:*}
     \xmlsetsetup{\xmldocument}{(div|span)[@lang]}{xml:lang}
-    \xmlsetsetup{\xmldocument}{div[@id='header']}{xml:titlepage}
-    \xmlsetsetup{\xmldocument}{div[@class='rights']}{xml:rights}
-    \xmlsetsetup{\xmldocument}{div[@id='dedication']}{xml:dedication}
-    \xmlsetsetup{\xmldocument}{div[@id='epigraph']}{xml:epigraph}
-    \xmlsetsetup{\xmldocument}{div[@id='frontmatter']}{xml:frontmatter}
-    \xmlsetsetup{\xmldocument}{div[@id='bodymatter']}{xml:bodymatter}
+    \xmlsetsetup{\xmldocument}{[@class='part']/h1}{xml:part}
+    \xmlsetsetup{\xmldocument}{[@class='part']/h2}{xml:h1}
+    \xmlsetsetup{\xmldocument}{[@class='hidden']/h1}{xml:hidden}
+    \xmlsetsetup{\xmldocument}{[@class='hidden']/h1}{xml:hidden}
+    \xmlsetsetup{\xmldocument}{[@id='header']}{xml:titlepage}
+    \xmlsetsetup{\xmldocument}{[@class='rights']}{xml:rights}
+    \xmlsetsetup{\xmldocument}{[@id='dedication']}{xml:dedication}
+    \xmlsetsetup{\xmldocument}{[@id='epigraph']}{xml:epigraph}
+    \xmlsetsetup{\xmldocument}{[@id='frontmatter']}{xml:frontmatter}
+    \xmlsetsetup{\xmldocument}{[@id='bodymatter']}{xml:bodymatter}
     \xmlsetsetup{\xmldocument}{[@id='colophon']}{xml:colophon}
     \xmlsetsetup{\xmldocument}{[@class='signature-date']}{xml:signaturedate}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteRef']}{xml:footnote:ref}
     \xmlsetsetup{\xmldocument}{div[@class='footnotes']}{}
     \xmlsetsetup{\xmldocument}{a[@class='uri']}{xml:autolink}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteBack']}{}
-    \xmlsetsetup{\xmldocument}{div[@class='hidden']/h1}{}
     \xmlsetsetup{\xmldocument}{a[text()='↩']}{}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: decimal']}{xml:ol}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: lower-alpha']}{xml:lalist}
@@ -39,8 +42,37 @@
 \stopxmlsetups
 
 \startxmlsetups xml:titlepage
-    \startfirstmatter
-    \xmlflush{#1}
+    \startcoverpagemakeup
+        \setupbodyfont[svb]
+        {\setupbodyfont[25pt]\sc \xmltext{#1}{h2[@class='author']}}
+        \vfill
+        \WidthSpanningText{\xmltext{#1}{h1[@class='title']}}{\textwidth}{SerifBold}
+
+        \startalign [flushright]
+        \hfill\WidthSpanningText{\xmltext{#1}{h1[@class='subtitle']}}{.75\textwidth}{SerifItalic}
+        \stopalign
+        \vfill
+        \startalign[center]
+        \dontleavehmode\externalfigure[simpleoldtypewriter][scale=400]
+        \stopalign
+        \vfill
+        \startalign[flushright]
+        {\setupbodyfont[25pt]\xmltext{#1}{p[@class='publisher']}}
+        \stopalign
+    \stopcoverpagemakeup
+
+    \starttitlepagemakeup
+        \mbox{}\vfill
+
+        {\itd \xmltext{#1}{h1[@class='title']}\par}\blank[big]
+        {\itb\setupinterlinespace \xmltext{#1}{h1[@class='subtitle']}\par}\blank[3*big]
+        {\sc \xmltext{#1}{h2[@class='author']}}
+
+        \vfill
+        \xmltext{#1}{h3[@class='date']}
+        \vfill
+        \xmltext{#1}{p[@class='publisher']}
+    \stoptitlepagemakeup
 \stopxmlsetups
 
 \startxmlsetups xml:rights
@@ -62,6 +94,7 @@
 \stopxmlsetups
 
 \startxmlsetups xml:frontmatter
+    \startfirstmatter
     \title{Sumario}\placelist[chapter]
     \stopfirstmatter
 
@@ -78,13 +111,13 @@
 
 \startxmlsetups xml:colophon
     \stopbodymatter
-    \startmode[notasalpie]
+    \startnotmode[without-notes]
     \startbackmatter
-    \chapter{Notas}
+    \chapter{\translate[en=Notes, fr=Notes, es=Notas, deo=Notizen, de=Notizen]}
 
     \placefootnotes
     \stopbackmatter
-    \stopmode
+    \stopnotmode
 
     \startcolophonmakeup
     \xmlflush{#1}
@@ -100,6 +133,10 @@
          \language[\xmlatt{#1}{lang}]
          \xmlsetup{#1}{xml:\xmltag{#1}}
      \endgroup
+\stopxmlsetups
+
+\startxmlsetups xml:part
+    \part{\xmlflush{#1}}
 \stopxmlsetups
 
 \startxmlsetups xml:h1
