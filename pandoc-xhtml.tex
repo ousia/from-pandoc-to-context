@@ -46,10 +46,10 @@
         \setupbodyfont[svb]
         {\setupbodyfont[25pt]\sc \xmltext{#1}{h2[@class='author']}}
         \vfill
-        \WidthSpanningText{\xmltext{#1}{h1[@class='title']}}{\textwidth}{SerifBold}
+        \scale[width=\textwidth]{\bf \xmltext{#1}{h1[@class='title']}}
 
         \startalign [flushright]
-        \hfill\WidthSpanningText{\xmltext{#1}{h1[@class='subtitle']}}{.75\textwidth}{SerifItalic}
+        \dontleavehmode\scale[width=.75\textwidth]{\it \xmltext{#1}{h1[@class='subtitle']}}
         \stopalign
         \vfill
         \startalign[center]
@@ -95,7 +95,7 @@
 
 \startxmlsetups xml:frontmatter
     \startfirstmatter
-    \title{Sumario}\placelist[chapter]
+    \title{\translate[en=Contents, es=Sumario, deo=Inhalt, de=Inhalt]}\placelist[chapter]
     \stopfirstmatter
 
     \startfrontmatter
@@ -111,17 +111,17 @@
 
 \startxmlsetups xml:colophon
     \stopbodymatter
-    \startnotmode[without-notes]
     \startbackmatter
+    \startnotmode[without-notes]
     \chapter{\translate[en=Notes, fr=Notes, es=Notas, deo=Notizen, de=Notizen]}
 
     \placefootnotes
-    \stopbackmatter
     \stopnotmode
 
     \startcolophonmakeup
     \xmlflush{#1}
     \stopcolophonmakeup
+    \stopbackmatter
 \stopxmlsetups
 
 \startxmlsetups xml:div
