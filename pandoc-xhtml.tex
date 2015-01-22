@@ -2,10 +2,9 @@
     \xmlsetsetup{\xmldocument}{*}{-}
     \xmlsetsetup{\xmldocument}{html|body|head|div|h1|h2|h3|h4|h5|h6|p|blockquote|span|em|q|b|pre|code|strong|a|ul|ol|li|hr|br|sup|sub}{xml:*}
     \xmlsetsetup{\xmldocument}{(div|span)[@lang]}{xml:lang}
-    \xmlsetsetup{\xmldocument}{[@class='part']/h1}{xml:part}
-    \xmlsetsetup{\xmldocument}{[@class='part']/h2}{xml:h1}
-    \xmlsetsetup{\xmldocument}{[@class='hidden']/h1}{xml:hidden}
-    \xmlsetsetup{\xmldocument}{[@class='hidden']/h1}{xml:hidden}
+    \xmlsetsetup{\xmldocument}{[contains(@class,'part')]/h1}{xml:part}
+    \xmlsetsetup{\xmldocument}{[contains(@class,'part')]/[contains(@class,'level2')]/h2}{xml:h1}
+    \xmlsetsetup{\xmldocument}{[contains(@class,'hidden')]/h1}{xml:hidden}
     \xmlsetsetup{\xmldocument}{[@id='header']}{xml:titlepage}
     \xmlsetsetup{\xmldocument}{[@class='rights']}{xml:rights}
     \xmlsetsetup{\xmldocument}{[@id='dedication']}{xml:dedication}
@@ -95,7 +94,7 @@
 
 \startxmlsetups xml:frontmatter
     \startfirstmatter
-    \title{\translate[en=Contents, es=Sumario, deo=Inhalt, de=Inhalt]}\placelist[chapter]
+    \title{\translate[en=Contents, es=Sumario, deo=Inhalt, de=Inhalt]}\placelist[part,chapter]
     \stopfirstmatter
 
     \startfrontmatter
