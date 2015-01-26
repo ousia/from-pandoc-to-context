@@ -13,6 +13,7 @@
     \xmlsetsetup{\xmldocument}{[@id='bodymatter']}{xml:bodymatter}
     \xmlsetsetup{\xmldocument}{[@id='colophon']}{xml:colophon}
     \xmlsetsetup{\xmldocument}{[@class='signature-date']}{xml:signaturedate}
+    \xmlsetsetup{\xmldocument}{span[@label]}{xml:logo}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteRef']}{xml:footnote:ref}
     \xmlsetsetup{\xmldocument}{div[@class='footnotes']}{}
     \xmlsetsetup{\xmldocument}{a[@class='uri']}{xml:autolink}
@@ -315,6 +316,11 @@
 
 \startxmlsetups xml:sub
      \low{\xmlflush{#1}}
+\stopxmlsetups
+
+\startxmlsetups xml:logo
+    \uppercasestring\xmlatt{#1}{label}\xmlatt{#1}{name}\to\ascii
+    \ifx\ascii\empty\else\getvalue{\ascii}\fi
 \stopxmlsetups
 
 \def\url#1{\begingroup\tt\goto{\hyphenatedurl{#1}}[url(#1)]\endgroup}
