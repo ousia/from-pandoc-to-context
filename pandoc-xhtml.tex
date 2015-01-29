@@ -94,8 +94,9 @@
 \stopxmlsetups
 
 \startxmlsetups xml:frontmatter
+    \def\TOC_Title{\startmode[*en]\title{Contents}\stopmode\startmode[*es]\title{Sumario}\stopmode\startmode[*deo]\title{Inhalt}\stopmode\startmode[*de]\title{Inhalt}\stopmode}
     \startfirstmatter
-    \title{\translate[en=Contents, es=Sumario, deo=Inhalt, de=Inhalt]}\placelist[part,chapter]
+    \TOC_Title\placelist[part,chapter]
     \stopfirstmatter
 
     \startfrontmatter
@@ -113,9 +114,8 @@
     \stopbodymatter
     \startbackmatter
     \startnotmode[without-notes]
-    \chapter{\translate[en=Notes, fr=Notes, es=Notas, deo=Notizen, de=Notizen]}
-
-    \placefootnotes
+    \def\Footnotes_Title{\startmode[*en]\chapter{Notes}\stopmode\startmode[*es]\chapter{Notas}\stopmode\startmode[*deo]\chapter{Notizen}\stopmode\startmode[*de]\chapter{Notizen}\stopmode\startmode[*fr]\chapter{Notes}\stopmode}
+    \Footnotes_Title\placefootnotes
     \stopnotmode
 
     \startcolophonmakeup
