@@ -234,10 +234,11 @@
      end
 \stopluacode
 
+\startnotmode[without-notes]
 \startxmlsetups xml:footnote:ref
     \xmlfilter{main}{div[@class='footnotes']/ol/li[@id=idstring('\xmlatt{#1}{href}')]/command(xml:footnote:set)}
 \stopxmlsetups
-
+\stopnotmode
 
 
 \startxmlsetups xml:ol
