@@ -1,6 +1,6 @@
 \startxmlsetups xml:pandoc
     \xmlsetsetup{\xmldocument}{*}{-}
-    \xmlsetsetup{\xmldocument}{html|body|head|div|h1|h2|h3|h4|h5|h6|p|blockquote|span|em|q|b|pre|code|strong|a|ul|ol|li|dl|hr|br|sup|sub}{xml:*}
+    \xmlsetsetup{\xmldocument}{html|body|head|div|h1|h2|h3|h4|h5|h6|p|blockquote|span|em|q|b|pre|code|strong|a|ul|ol|li|dl|dt|dd|hr|br|sup|sub}{xml:*}
     \xmlsetsetup{\xmldocument}{(div|span)[@lang]}{xml:lang}
     \xmlsetsetup{\xmldocument}{[contains(@class,'part')]/h1}{xml:part}
     \xmlsetsetup{\xmldocument}{[contains(@class,'part')]/[contains(@class,'level2')]/h2}{xml:h1}
@@ -24,6 +24,7 @@
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: upper-alpha']}{xml:ualist}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: lower-roman']}{xml:lrlist}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: upper-roman']}{xml:urlist}
+    \xmlsetsetup{\xmldocument}{div[contains(@class,'options')]/dl/dt}{xml:dt_options}
 \stopxmlsetups
 
 \xmlregistersetup{xml:pandoc}
@@ -304,7 +305,19 @@
 \stopxmlsetups
 
 \startxmlsetups xml:dl
-    \description{\xmltext{#1}{dt}} \xmltext{#1}{dd}
+    \xmlflush{#1}\par
+\stopxmlsetups
+
+\startxmlsetups xml:dt
+    \description{\xmlflush{#1}}
+\stopxmlsetups
+
+\startxmlsetups xml:dt_options
+    \options{\xmlflush{#1}}
+\stopxmlsetups
+
+\startxmlsetups xml:dd
+    \xmlflush{#1}
 \stopxmlsetups
 
 \startxmlsetups xml:hr
@@ -330,6 +343,9 @@
 
 \def\url#1{\begingroup\tt\goto{\hyphenatedurl{#1}}[url(#1)]\endgroup}
 \def\href#1#2{\goto{#2} [url(#1)]}
+
+\definedescription[description][hang=fit, width=fit, headstyle=em, align=justify, margin=yes]
+\definedescription[options][width=fit, headstyle=tt, align=justify, location=left, margin=yes]
 
 \installlanguage [af-ZA] [af]
 \installlanguage [ar-DZ] [ar-dz]
