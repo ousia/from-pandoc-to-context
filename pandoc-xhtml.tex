@@ -1,6 +1,6 @@
 \startxmlsetups xml:pandoc
     \xmlsetsetup{\xmldocument}{*}{-}
-    \xmlsetsetup{\xmldocument}{html|body|head|div|h1|h2|h3|h4|h5|h6|p|blockquote|span|em|q|b|pre|code|strong|a|ul|ol|li|hr|br|sup|sub}{xml:*}
+    \xmlsetsetup{\xmldocument}{html|body|head|div|h1|h2|h3|h4|h5|h6|p|blockquote|span|em|q|b|pre|code|strong|a|ul|ol|li|dl|hr|br|sup|sub}{xml:*}
     \xmlsetsetup{\xmldocument}{(div|span)[@lang]}{xml:lang}
     \xmlsetsetup{\xmldocument}{[contains(@class,'part')]/h1}{xml:part}
     \xmlsetsetup{\xmldocument}{[contains(@class,'part')]/[contains(@class,'level2')]/h2}{xml:h1}
@@ -301,6 +301,10 @@
     \startitem
         \xmlflush{#1}
     \stopitem
+\stopxmlsetups
+
+\startxmlsetups xml:dl
+    \description{\xmltext{#1}{dt}} \xmltext{#1}{dd}
 \stopxmlsetups
 
 \startxmlsetups xml:hr
