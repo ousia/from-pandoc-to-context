@@ -54,7 +54,7 @@
         \stopalign
         \vfill
         \startalign[center]
-        \dontleavehmode\externalfigure[simpleoldtypewriter][scale=400]
+        \dontleavehmode\CoverImage
         \stopalign
         \vfill
         \startalign[flushright]
@@ -340,6 +340,9 @@
     \uppercasestring\xmlatt{#1}{label}\xmlatt{#1}{name}\to\ascii
     \ifx\ascii\empty\else\getvalue{\ascii}\fi
 \stopxmlsetups
+
+\def\CoverImageFile{\externalfigure[simpleoldtypewriter][scale=400]}
+\def\CoverImage{\doifsomethingelse{\CoverImageFile}{\CoverImageFile}{}}
 
 \def\url#1{\begingroup\tt\goto{\hyphenatedurl{#1}}[url(#1)]\endgroup}
 \def\href#1#2{\goto{#2} [url(#1)]}
