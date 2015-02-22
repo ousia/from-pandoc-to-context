@@ -336,19 +336,47 @@
      \low{\xmlflush{#1}}
 \stopxmlsetups
 
+%%% this element is the way to get the TeX and ConTeXt logos
+%%% in proper form (not sure whether LaTeX is included
+%%% the only way to get them is (label in smallcaps):
+%%% <span label="tex">TeX</span>
+%%% Sp you get standard text in other formats and logos with ConTeXt
+
 \startxmlsetups xml:logo
     \uppercasestring\xmlatt{#1}{label}\xmlatt{#1}{name}\to\ascii
     \ifx\ascii\empty\else\getvalue{\ascii}\fi
 \stopxmlsetups
 
+%%% This is a way of having a cover image
+%%% But you might want to have a new cover
+
 \def\CoverImageFile{\externalfigure[simpleoldtypewriter][scale=400]}
 \def\CoverImage{\doifsomethingelse{\CoverImageFile}{\CoverImageFile}{}}
+
+%%% This a simple method to have interactive hyperlinks
 
 \def\url#1{\begingroup\tt\goto{\hyphenatedurl{#1}}[url(#1)]\endgroup}
 \def\href#1#2{\goto{#2} [url(#1)]}
 
+%%% Two samples for definition lists
+
 \definedescription[description][hang=fit, width=fit, headstyle=em, align=justify, margin=yes]
 \definedescription[options][width=fit, headstyle=tt, align=justify, location=left, margin=yes]
+
+%%% these makeups are created (defined) to avoid crashes with
+%%% the current setup, but they would need to be configured (setup)
+%%% when if we want to use them
+
+\definemakeup[coverpage]
+\definemakeup[titlepage]
+\definemakeup[copyright]
+\definemakeup[dedication]
+\definemakeup[epigraph]
+\definemakeup[colophon]
+
+%%% these are language synonyms, so that XML values can match
+%%% ConTeXt values (btw, ConTeXt seems to have less languages
+%%% than LaTeX)
 
 \installlanguage [af-ZA] [af]
 \installlanguage [ar-DZ] [ar-dz]
