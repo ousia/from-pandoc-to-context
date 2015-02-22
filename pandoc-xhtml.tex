@@ -114,7 +114,7 @@
 \startxmlsetups xml:colophon
     \stopbodymatter
     \startbackmatter
-    \startnotmode[without-notes]
+    \startnotmode[nofootnotes]
     \def\Footnotes_Title{\startmode[*en]\chapter{Notes}\stopmode\startmode[*es]\chapter{Notas}\stopmode\startmode[*deo]\chapter{Notizen}\stopmode\startmode[*de]\chapter{Notizen}\stopmode\startmode[*fr]\chapter{Notes}\stopmode}
     \Footnotes_Title\placefootnotes
     \stopnotmode
@@ -235,7 +235,7 @@
      end
 \stopluacode
 
-\startnotmode[without-notes]
+\startnotmode[nofootnotes]
 \startxmlsetups xml:footnote:ref
     \xmlfilter{main}{div[@class='footnotes']/ol/li[@id=idstring('\xmlatt{#1}{href}')]/command(xml:footnote:set)}
 \stopxmlsetups
