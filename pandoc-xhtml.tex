@@ -201,13 +201,11 @@
 \stopxmlsetups
 
 \startxmlsetups xml:pre
-    %~ \xmldisplayverbatim{#1}
-    \xmlflush{#1}\par
+    \begingroup\tt\xmlflushspacewise{#1}\endgroup\par
 \stopxmlsetups
 
 \startxmlsetups xml:code
-    \begingroup\tt\xmlflush{#1}\endgroup
-     %~ \xmlinlineverbatim{#1}
+    \begingroup\tt\xmlflushspacewise{#1}\endgroup
 \stopxmlsetups
 
 \startxmlsetups xml:strong
@@ -349,6 +347,8 @@
 
 %%% This is a way of having a cover image
 %%% But you might want to have a new cover
+%%% default image from (converted to PDF by me):
+%%% https://openclipart.org/detail/191811/
 
 \def\CoverImageFile{\externalfigure[simpleoldtypewriter][scale=400]}
 \def\CoverImage{\doifsomethingelse{\CoverImageFile}{\CoverImageFile}{}}
