@@ -58,7 +58,7 @@
         \stopalign
         \vfill
         \startalign[flushright]
-        \dontleavehmode\scale[width=.5\textwidth]{\xmltext{#1}{p[@class='publisher']}}
+        \dontleavehmode\scale[width=.75\textwidth]{\xmltext{#1}{p[@class='publisher']}}
         \stopalign
     \stopcoverpagemakeup
 
@@ -346,12 +346,16 @@
 \stopxmlsetups
 
 %%% This is a way of having a cover image
-%%% But you might want to have a new cover
-%%% default image from (converted to PDF by me):
+%%% But you might want to have a new cover.
+%%% Default image from (converted to PDF by me):
 %%% https://openclipart.org/detail/191811/
+%%% TypographyTribute can be found at:
+%%% http://www.dafont.com/typographytribute.font
 
 \def\CoverImageFile{\externalfigure[simpleoldtypewriter][scale=400]}
-\def\CoverImage{\doifsomethingelse{\CoverImageFile}{\CoverImageFile}{}}
+\definefontfamily[ornamenta][rm][TypographyTribute]
+\def\CoverImageFont{\scale[width=\textwidth]{\ornamenta F}}
+\def\CoverImage{\doifsomethingelse{\CoverImageFile}{\CoverImageFile}{\CoverImageFont}}
 
 %%% This a simple method to have interactive hyperlinks
 
