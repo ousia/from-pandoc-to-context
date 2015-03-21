@@ -11,6 +11,8 @@
     \xmlsetsetup{\xmldocument}{[@id='epigraph']}{xml:epigraph}
     \xmlsetsetup{\xmldocument}{[@id='frontmatter']}{xml:frontmatter}
     \xmlsetsetup{\xmldocument}{[@id='bodymatter']}{xml:bodymatter}
+    %~ \xmlsetsetup{\xmldocument}{[@id='appendix']}{xml:appendix}
+    %~ \xmlsetsetup{\xmldocument}{[@id='appendices']}{xml:appendices}
     \xmlsetsetup{\xmldocument}{[@id='colophon']}{xml:colophon}
     \xmlsetsetup{\xmldocument}{[@class='signature-date']}{xml:signaturedate}
     \xmlsetsetup{\xmldocument}{span[@label]}{xml:logo}
@@ -208,8 +210,8 @@
     \begingroup\tt\xmlflushspacewise{#1}\endgroup
 \stopxmlsetups
 
-\startxmlsetups xml:strong
-    \begingroup\bf\xmlflush{#1}\endgroup
+\startxmlsetups xml:strong % used for sans-serif instead of bold
+    \begingroup\ss\xmlflush{#1}\endgroup
 \stopxmlsetups
 
 \startxmlsetups xml:a
