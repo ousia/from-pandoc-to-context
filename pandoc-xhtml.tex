@@ -180,6 +180,7 @@
 \stopxmlsetups
 
 \startxmlsetups xml:blockquote
+    %~ \doifmodeelse{*en}{\blank\startnarrow\setupindenting[yes,next]\xmlflush{#1}\stopnarrow\blank}    {\blank\startnarrow\xmlflush{#1}\stopnarrow\blank}
     \blank\startnarrow\xmlflush{#1}\stopnarrow\blank
 \stopxmlsetups
 
