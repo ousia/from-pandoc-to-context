@@ -16,7 +16,6 @@
     \xmlsetsetup{\xmldocument}{[@id='colophon']}{xml:colophon}
     \xmlsetsetup{\xmldocument}{[@class='signature-date']}{xml:signaturedate}
     \xmlsetsetup{\xmldocument}{span[@label]}{xml:logo}
-    %~ \xmlsetsetup{\xmldocument}{span[@label='context']}{xml:context}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteRef']}{xml:footnote:ref}
     \xmlsetsetup{\xmldocument}{div[@class='footnotes']}{}
     \xmlsetsetup{\xmldocument}{a[@class='uri']}{xml:autolink}
@@ -351,14 +350,7 @@
 
 \startxmlsetups xml:logo
     \executeifdefined{\utfupper{\xmlatt{#1}{label}}}{{\tttf ???}}
-    %~ \getvalue{\utfupper{\xmlatt{#1}{label}}}
-    %~ \uppercasestring\xmlatt{#1}{label}\xmlatt{#1}{name}\to\ascii
-    %~ \ifx\ascii\empty\else\getvalue{\ascii}\fi
 \stopxmlsetups
-
-%~ \startxmlsetups xml:context
-    %~ \ConTeXt
-%~ \stopxmlsetups
 
 %%% This is a way of having a cover image
 %%% But you might want to have a new cover.
