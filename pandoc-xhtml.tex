@@ -16,11 +16,13 @@
     \xmlsetsetup{\xmldocument}{[@id='colophon']}{xml:colophon}
     \xmlsetsetup{\xmldocument}{[@class='signature-date']}{xml:signaturedate}
     \xmlsetsetup{\xmldocument}{span[@label]}{xml:logo}
+    \xmlsetsetup{\xmldocument}{span[@label='context']}{xml:context}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteRef']}{xml:footnote:ref}
     \xmlsetsetup{\xmldocument}{div[@class='footnotes']}{}
     \xmlsetsetup{\xmldocument}{a[@class='uri']}{xml:autolink}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteBack']}{}
     \xmlsetsetup{\xmldocument}{a[text()='↩']}{}
+    \xmlsetsetup{\xmldocument}{div[contains(@class,'tight')]/ul}{xml:ul:packed}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: decimal']}{xml:ol}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: lower-alpha']}{xml:lalist}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: upper-alpha']}{xml:ualist}
@@ -298,6 +300,12 @@
     \stopitemize
 \stopxmlsetups
 
+\startxmlsetups xml:ul:packed
+    \startitemize[packed]
+        \xmlflush{#1}
+    \stopitemize
+\stopxmlsetups
+
 \startxmlsetups xml:li
     \startitem
         \xmlflush{#1}
@@ -337,14 +345,17 @@
 \stopxmlsetups
 
 %%% this element is the way to get the TeX and ConTeXt logos
-%%% in proper form (not sure whether LaTeX is included
-%%% the only way to get them is (label in smallcaps):
+%%% markdown tagging:
 %%% <span label="tex">TeX</span>
 %%% Sp you get standard text in other formats and logos with ConTeXt
 
 \startxmlsetups xml:logo
     \uppercasestring\xmlatt{#1}{label}\xmlatt{#1}{name}\to\ascii
     \ifx\ascii\empty\else\getvalue{\ascii}\fi
+\stopxmlsetups
+
+\startxmlsetups xml:context
+    \ConTeXt
 \stopxmlsetups
 
 %%% This is a way of having a cover image
