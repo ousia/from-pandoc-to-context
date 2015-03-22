@@ -4,6 +4,7 @@
     \xmlsetsetup{\xmldocument}{(div|span)[@lang]}{xml:lang}
     \xmlsetsetup{\xmldocument}{[contains(@class,'part')]/h1}{xml:part}
     \xmlsetsetup{\xmldocument}{[contains(@class,'part')]/[contains(@class,'level2')]/h2}{xml:h1}
+    \xmlsetsetup{\xmldocument}{[contains(@class,'part')]/[contains(@class,'level2')]/[contains(@class,'level3')]/h3}{xml:h2}
     \xmlsetsetup{\xmldocument}{[contains(@class,'hidden')]/h1}{xml:hidden}
     \xmlsetsetup{\xmldocument}{[@id='header']}{xml:titlepage}
     \xmlsetsetup{\xmldocument}{[@class='rights']}{xml:rights}
@@ -16,7 +17,7 @@
     \xmlsetsetup{\xmldocument}{[@id='colophon']}{xml:colophon}
     \xmlsetsetup{\xmldocument}{[@class='signature-date']}{xml:signaturedate}
     \xmlsetsetup{\xmldocument}{span[@label]}{xml:logo}
-    \xmlsetsetup{\xmldocument}{span[contains(@class,'tex-logo')]}{xml:tex:logo}
+    \xmlsetsetup{\xmldocument}{span[contains(@class,'texlogo')]}{xml:tex:logo}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteRef']}{xml:footnote:ref}
     \xmlsetsetup{\xmldocument}{div[@class='footnotes']}{}
     \xmlsetsetup{\xmldocument}{a[@class='uri']}{xml:autolink}
@@ -354,7 +355,7 @@
 \stopxmlsetups
 
 %%% alternate TeX logos
-%%% <span class="tex-logo">TeX</span>
+%%% <span class="texlogo">TeX</span>
 
 \startxmlsetups xml:tex:logo
     \executeifdefined{\utfupper{\xmlflush{#1}}}{{\tttf ???}}
