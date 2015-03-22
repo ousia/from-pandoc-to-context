@@ -16,6 +16,7 @@
     \xmlsetsetup{\xmldocument}{[@id='colophon']}{xml:colophon}
     \xmlsetsetup{\xmldocument}{[@class='signature-date']}{xml:signaturedate}
     \xmlsetsetup{\xmldocument}{span[@label]}{xml:logo}
+    \xmlsetsetup{\xmldocument}{span[contains(@class,'tex-logo')]}{xml:tex:logo}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteRef']}{xml:footnote:ref}
     \xmlsetsetup{\xmldocument}{div[@class='footnotes']}{}
     \xmlsetsetup{\xmldocument}{a[@class='uri']}{xml:autolink}
@@ -69,7 +70,7 @@
         \mbox{}\vfill
 
         {\itd \xmltext{#1}{h1[@class='title']}\par}\blank[big]
-        {\itb\setupinterlinespace \xmltext{#1}{h1[@class='subtitle']}\par}\blank[3*big]
+        {\resetbreakpoints\itb\setupinterlinespace \xmltext{#1}{h1[@class='subtitle']}\par}\blank[3*big]
         {\sc \xmltext{#1}{h2[@class='author']}}
 
         \vfill
@@ -350,6 +351,13 @@
 
 \startxmlsetups xml:logo
     \executeifdefined{\utfupper{\xmlatt{#1}{label}}}{{\tttf ???}}
+\stopxmlsetups
+
+%%% alternate TeX logos
+%%% <span class="tex-logo">TeX</span>
+
+\startxmlsetups xml:tex:logo
+    \executeifdefined{\utfupper{\xmlflush{#1}}}{{\tttf ???}}
 \stopxmlsetups
 
 %%% This is a way of having a cover image
