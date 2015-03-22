@@ -1,6 +1,6 @@
 \startxmlsetups xml:pandoc
-    \xmlsetsetup{\xmldocument}{*}{-}
-    \xmlsetsetup{\xmldocument}{html|body|head|div|h1|h2|h3|h4|h5|h6|p|blockquote|span|em|q|b|pre|code|strong|a|ul|ol|li|dl|dt|dd|hr|br|sup|sub}{xml:*}
+    \xmlsetsetup{\xmldocument}{html|body|head|div|h1|h2|h3|h4|h5|h6|p|blockquote|span|em|q|b|strong|a|ul|ol|li|dl|dt|dd|hr|br|sup|sub|code}{xml:*}
+    \xmlsetsetup{\xmldocument}{pre/code}{xml:pre:code}
     \xmlsetsetup{\xmldocument}{(div|span)[@lang]}{xml:lang}
     \xmlsetsetup{\xmldocument}{[contains(@class,'part')]/h1}{xml:part}
     \xmlsetsetup{\xmldocument}{[contains(@class,'part')]/[contains(@class,'level2')]/h2}{xml:h1}
@@ -206,8 +206,8 @@
     \begingroup\bf\xmlflush{#1}\endgroup
 \stopxmlsetups
 
-\startxmlsetups xml:pre
-    \begingroup\tt\xmlflushspacewise{#1}\endgroup\par
+\startxmlsetups xml:pre:code
+    \xmlprettyprint{#1}{none}
 \stopxmlsetups
 
 \startxmlsetups xml:code
