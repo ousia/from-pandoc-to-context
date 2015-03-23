@@ -18,13 +18,12 @@
     \xmlsetsetup{\xmldocument}{[@id='colophon']}{xml:colophon}
     \xmlsetsetup{\xmldocument}{[@class='signature-date']}{xml:signaturedate}
     \xmlsetsetup{\xmldocument}{span[@label]}{xml:logo}
-    \xmlsetsetup{\xmldocument}{span[contains(@class,'texlogo')]}{xml:tex:logo}
+    \xmlsetsetup{\xmldocument}{span[contains(@class,'tex\letterpercent-logo')]}{xml:tex:logo}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteRef']}{xml:footnote:ref}
     \xmlsetsetup{\xmldocument}{div[@class='footnotes']}{}
     \xmlsetsetup{\xmldocument}{a[@class='uri']}{xml:autolink}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteBack']}{}
     \xmlsetsetup{\xmldocument}{a[text()='↩']}{}
-    \xmlsetsetup{\xmldocument}{div[contains(@class,'tight')]/ul}{xml:ul:packed}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: decimal']}{xml:ol}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: lower-alpha']}{xml:lalist}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: upper-alpha']}{xml:ualist}
@@ -298,16 +297,17 @@
 \stopxmlsetups
 
 \startxmlsetups xml:ul
-    \startitemize
-        \xmlflush{#1}
-    \stopitemize
+     \xmldoifelse{#1}{/li/p}{
+         \startitemize
+             \xmlflush{#1}
+         \stopitemize
+     } {
+         \startitemize[packed]
+             \xmlflush{#1}
+         \stopitemize
+     }
 \stopxmlsetups
 
-\startxmlsetups xml:ul:packed
-    \startitemize[packed]
-        \xmlflush{#1}
-    \stopitemize
-\stopxmlsetups
 
 \startxmlsetups xml:li
     \startitem
@@ -357,7 +357,7 @@
 \stopxmlsetups
 
 %%% alternate TeX logos
-%%% <span class="texlogo">TeX</span>
+%%% <span class="tex-logo">TeX</span>
 
 \startxmlsetups xml:tex:logo
     \executeifdefined{\utfupper{\xmlflush{#1}}}{{\tttf ???}}
