@@ -365,12 +365,12 @@
 
 %%% This is a way of having a cover image
 %%% But you might want to have a new cover.
-%%% Default image from (converted to PDF by me):
-%%% https://openclipart.org/detail/191811/
+%%% Default image from (edited by me):
+%%% https://openclipart.org/detail/216016/
 %%% TypographyTribute can be found at:
 %%% http://www.dafont.com/typographytribute.font
 
-\def\CoverImageFile{\externalfigure[simpleoldtypewriter][scale=400]}
+\def\CoverImageFile{\externalfigure[TypeWriter][width=\textwidth]}
 \definefontfamily[ornamenta][rm][TypographyTribute]
 \def\CoverImageFont{\scale[width=\textwidth]{\ornamenta F}}
 \def\CoverImage{\doifsomethingelse{\CoverImageFile}{\CoverImageFile}{\CoverImageFont}}
