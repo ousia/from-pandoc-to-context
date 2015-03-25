@@ -1,7 +1,7 @@
 \startxmlsetups xml:pandoc
     \xmlsetsetup{\xmldocument}{html|body|head|div|h1|h2|h3|h4|h5|h6|p|blockquote|span|em|q|b|strong|a|ul|ol|li|dl|dt|dd|hr|br|sup|sub|code}{xml:*}
     \xmlsetsetup{\xmldocument}{pre/code}{xml:pre:code}
-    \xmlsetsetup{\xmldocument}{head}{xml:trash}
+    \xmlsetsetup{\xmldocument}{head}{}
     \xmlsetsetup{\xmldocument}{(div|span)[@lang]}{xml:lang}
     \xmlsetsetup{\xmldocument}{[contains(@class,'part')]/h1}{xml:part}
     \xmlsetsetup{\xmldocument}{[contains(@class,'part')]/[contains(@class,'level2')]/h2}{xml:h1}
@@ -25,10 +25,11 @@
     \xmlsetsetup{\xmldocument}{a[@class='footnoteBack']}{}
     \xmlsetsetup{\xmldocument}{a[text()='↩']}{}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: decimal']}{xml:ol}
-    \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: lower-alpha']}{xml:lalist}
-    \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: upper-alpha']}{xml:ualist}
-    \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: lower-roman']}{xml:lrlist}
-    \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: upper-roman']}{xml:urlist}
+    \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: lower-alpha']}{xml:loweralphalist}
+    \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: upper-alpha']}{xml:upperalphalist}
+    \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: lower-roman']}{xml:lowerromanlist}
+    \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: upper-roman']}{xml:upperromanlist}
+    \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: lower-greek']}{xml:lowergreeklist}
     \xmlsetsetup{\xmldocument}{div[contains(@class,'options')]/dl/dt}{xml:dt_options}
 \stopxmlsetups
 
@@ -247,53 +248,135 @@
 
 
 \startxmlsetups xml:ol
-\doifnumberelse{\xmlatt{#1}{start}}
-    {\startitemize[n][start=\xmlatt{#1}{start}]
-        \xmlflush{#1}
-    \stopitemize}
-    {\startitemize[n]
-        \xmlflush{#1}
-    \stopitemize}
+    \xmldoifelse{#1}{/li/p}{
+        \doifnumberelse{\xmlatt{#1}{start}}{
+            \startitemize[n][start=\xmlatt{#1}{start}]
+                \xmlflush{#1}
+            \stopitemize
+            } {
+            \startitemize[n]
+                \xmlflush{#1}
+            \stopitemize}
+        } {
+        \doifnumberelse{\xmlatt{#1}{start}}{
+            \startitemize[n,packed][start=\xmlatt{#1}{start}]
+                \xmlflush{#1}
+            \stopitemize
+            } {
+            \startitemize[n,packed]
+                \xmlflush{#1}
+            \stopitemize}
+    }
 \stopxmlsetups
 
-\startxmlsetups xml:lalist
-\doifnumberelse{\xmlatt{#1}{start}}
-    {\startitemize[a][start=\xmlatt{#1}{start}]
-        \xmlflush{#1}
-    \stopitemize}
-    {\startitemize[a]
-        \xmlflush{#1}
-    \stopitemize}
+\startxmlsetups xml:loweralphalist
+    \xmldoifelse{#1}{/li/p}{
+        \doifnumberelse{\xmlatt{#1}{start}}{
+            \startitemize[a][start=\xmlatt{#1}{start}]
+                \xmlflush{#1}
+            \stopitemize
+            } {
+            \startitemize[a]
+                \xmlflush{#1}
+            \stopitemize}
+        } {
+        \doifnumberelse{\xmlatt{#1}{start}}{
+            \startitemize[a,packed][start=\xmlatt{#1}{start}]
+                \xmlflush{#1}
+            \stopitemize
+            } {
+            \startitemize[a,packed]
+                \xmlflush{#1}
+            \stopitemize}
+    }
 \stopxmlsetups
 
-\startxmlsetups xml:ualist
-\doifnumberelse{\xmlatt{#1}{start}}
-    {\startitemize[A][start=\xmlatt{#1}{start}]
-        \xmlflush{#1}
-    \stopitemize}
-    {\startitemize[A]
-        \xmlflush{#1}
-    \stopitemize}
+\startxmlsetups xml:upperalphalist
+    \xmldoifelse{#1}{/li/p}{
+        \doifnumberelse{\xmlatt{#1}{start}}{
+            \startitemize[A][start=\xmlatt{#1}{start}]
+                \xmlflush{#1}
+            \stopitemize
+            } {
+            \startitemize[A]
+                \xmlflush{#1}
+            \stopitemize}
+        } {
+        \doifnumberelse{\xmlatt{#1}{start}}{
+            \startitemize[A,packed][start=\xmlatt{#1}{start}]
+                \xmlflush{#1}
+            \stopitemize
+            } {
+            \startitemize[A,packed]
+                \xmlflush{#1}
+            \stopitemize}
+    }
 \stopxmlsetups
 
-\startxmlsetups xml:lrlist
-\doifnumberelse{\xmlatt{#1}{start}}
-    {\startitemize[r][start=\xmlatt{#1}{start}]
-        \xmlflush{#1}
-    \stopitemize}
-    {\startitemize[r]
-        \xmlflush{#1}
-    \stopitemize}
+\startxmlsetups xml:lowerromanlist
+    \xmldoifelse{#1}{/li/p}{
+        \doifnumberelse{\xmlatt{#1}{start}}{
+            \startitemize[r][start=\xmlatt{#1}{start}]
+                \xmlflush{#1}
+            \stopitemize
+            } {
+            \startitemize[r]
+                \xmlflush{#1}
+            \stopitemize}
+        } {
+        \doifnumberelse{\xmlatt{#1}{start}}{
+            \startitemize[r,packed][start=\xmlatt{#1}{start}]
+                \xmlflush{#1}
+            \stopitemize
+            } {
+            \startitemize[r,packed]
+                \xmlflush{#1}
+            \stopitemize}
+    }
 \stopxmlsetups
 
-\startxmlsetups xml:urlist
-\doifnumberelse{\xmlatt{#1}{start}}
-    {\startitemize[R][start=\xmlatt{#1}{start}]
-        \xmlflush{#1}
-    \stopitemize}
-    {\startitemize[R]
-        \xmlflush{#1}
-    \stopitemize}
+\startxmlsetups xml:upperromanlist
+    \xmldoifelse{#1}{/li/p}{
+        \doifnumberelse{\xmlatt{#1}{start}}{
+            \startitemize[R][start=\xmlatt{#1}{start}]
+                \xmlflush{#1}
+            \stopitemize
+            } {
+            \startitemize[R]
+                \xmlflush{#1}
+            \stopitemize}
+        } {
+        \doifnumberelse{\xmlatt{#1}{start}}{
+            \startitemize[R,packed][start=\xmlatt{#1}{start}]
+                \xmlflush{#1}
+            \stopitemize
+            } {
+            \startitemize[R,packed]
+                \xmlflush{#1}
+            \stopitemize}
+    }
+\stopxmlsetups
+
+\startxmlsetups xml:lowergreeklist % not implemented by pandoc
+    \xmldoifelse{#1}{/li/p}{
+        \doifnumberelse{\xmlatt{#1}{start}}{
+            \startitemize[g][start=\xmlatt{#1}{start}]
+                \xmlflush{#1}
+            \stopitemize
+            } {
+            \startitemize[g]
+                \xmlflush{#1}
+            \stopitemize}
+        } {
+        \doifnumberelse{\xmlatt{#1}{start}}{
+            \startitemize[g,packed][start=\xmlatt{#1}{start}]
+                \xmlflush{#1}
+            \stopitemize
+            } {
+            \startitemize[g,packed]
+                \xmlflush{#1}
+            \stopitemize}
+    }
 \stopxmlsetups
 
 \startxmlsetups xml:ul
