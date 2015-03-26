@@ -211,8 +211,8 @@
     \xmlprettyprint{#1}{none}
 \stopxmlsetups
 
-\startxmlsetups xml:code
-    \begingroup\tt\xmlflushspacewise{#1}\endgroup
+\startxmlsetups xml:code % need extra code to work
+    \begingroup\sethyphenationfeatures[underscore]\tt\xmlflushspacewise{#1}\endgroup
 \stopxmlsetups
 
 \startxmlsetups xml:strong % used for sans-serif instead of bold
