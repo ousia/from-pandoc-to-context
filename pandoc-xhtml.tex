@@ -55,7 +55,7 @@
         \vfill
         \scale[width=\textwidth]{\bf \xmltext{#1}{h1[@class='title']}}
 
-        \startalign [flushright]
+        \blank[small]\startalign [flushright]
         \dontleavehmode\scale[width=.75\textwidth]{\it \xmltext{#1}{h1[@class='subtitle']}}
         \stopalign
         \vfill
@@ -208,7 +208,7 @@
 \stopxmlsetups
 
 \startxmlsetups xml:pre:code
-    \xmlprettyprint{#1}{none}
+    \begingroup\setupinterlinespace[line=2.8ex]\xmlprettyprint{#1}{none}\endgroup
 \stopxmlsetups
 
 \startxmlsetups xml:code % need extra code to work
