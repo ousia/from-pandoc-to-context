@@ -453,7 +453,7 @@
 %%% TypographyTribute can be found at:
 %%% http://www.dafont.com/typographytribute.font
 
-\def\CoverImageFile{\externalfigure[TypeWriter][width=\textwidth]}
+\def\CoverImageFile{}%\externalfigure[TypeWriter][width=\textwidth]}
 \definefontfamily[ornamenta][rm][TypographyTribute]
 \def\CoverImageFont{\scale[width=\textwidth]{\ornamenta F}}
 \def\CoverImage{\doifsomethingelse{\CoverImageFile}{\CoverImageFile}{\CoverImageFont}}
@@ -468,9 +468,9 @@
 \definedescription[description][hang=fit, width=fit, headstyle=em, align=justify, margin=yes]
 \definedescription[options][width=fit, headstyle=tt, align=justify, location=left, margin=yes]
 
-%%% these makeups are created (defined) to avoid crashes with
-%%% the current setup, but they would need to be configured (setup)
-%%% when if we want to use them
+%%% These makeups are created (defined) to avoid crashes with
+%%% the current setup. They need to be configured (setup)
+%%% when if we want to use them (otherwise we get only defaults).
 
 \definemakeup[coverpage]
 \definemakeup[titlepage]
@@ -479,7 +479,7 @@
 \definemakeup[epigraph]
 \definemakeup[colophon]
 
-%%% these are language synonyms, so that XML values can match
+%%% These are language synonyms, so that XML values can match
 %%% ConTeXt values (btw, ConTeXt seems to have less languages
 %%% than LaTeX)
 
