@@ -31,6 +31,7 @@
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: upper-roman']}{xml:upperromanlist}
     \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: lower-greek']}{xml:lowergreeklist}
     \xmlsetsetup{\xmldocument}{div[contains(@class,'options')]/dl/dt}{xml:dt_options}
+    \xmlsetsetup{\xmldocument}{div[contains(@class,'options')]/dl/dl}{xml:dl_options}
 \stopxmlsetups
 
 \xmlregistersetup{xml:pandoc}
@@ -399,19 +400,25 @@
 \stopxmlsetups
 
 \startxmlsetups xml:dl
-    \xmlflush{#1}\par
+    \xmlflush{#1}
 \stopxmlsetups
 
 \startxmlsetups xml:dt
-    \description{\xmlflush{#1}}
-\stopxmlsetups
-
-\startxmlsetups xml:dt_options
-    \options{\xmlflush{#1}}
+    \startdescription{\xmlflush{#1}}
 \stopxmlsetups
 
 \startxmlsetups xml:dd
     \xmlflush{#1}
+    \stopdescription
+\stopxmlsetups
+
+\startxmlsetups xml:dt_options
+    \startoptions{\xmlflush{#1}}
+\stopxmlsetups
+
+\startxmlsetups xml:dd_options
+    \xmlflush{#1}
+    \stopoptions
 \stopxmlsetups
 
 \startxmlsetups xml:hr
