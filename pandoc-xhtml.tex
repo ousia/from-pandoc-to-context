@@ -13,8 +13,8 @@
     \xmlsetsetup{\xmldocument}{[@id='epigraph']}{xml:epigraph}
     \xmlsetsetup{\xmldocument}{[@id='frontmatter']}{xml:frontmatter}
     \xmlsetsetup{\xmldocument}{[@id='bodymatter']}{xml:bodymatter}
-    %~ \xmlsetsetup{\xmldocument}{[@id='appendix']}{xml:appendix}
-    %~ \xmlsetsetup{\xmldocument}{[@id='appendices']}{xml:appendices}
+    \xmlsetsetup{\xmldocument}{[@id='backmatter']}{xml:backmatter}
+    \xmlsetsetup{\xmldocument}{[@id='appendices']}{xml:appendices}
     \xmlsetsetup{\xmldocument}{[@id='colophon']}{xml:colophon}
     \xmlsetsetup{\xmldocument}{[@class='signature-date']}{xml:signaturedate}
     \xmlsetsetup{\xmldocument}{span[@label]}{xml:logo}
@@ -118,6 +118,18 @@
     \xmlflush{#1}
 \stopxmlsetups
 
+\startxmlsetups xml:backmatter
+    \startbackmatter
+    \xmlflush{#1}
+    \stopbackmatter
+\stopxmlsetups
+
+\startxmlsetups xml:appendices
+    \startappendices
+    \xmlflush{#1}
+    \stopappendices
+\stopxmlsetups
+
 \startxmlsetups xml:colophon
     \stopbodymatter
     \startbackmatter
@@ -182,7 +194,7 @@
 \stopxmlsetups
 
 \startxmlsetups xml:blockquote
-    %~ \doifmodeelse{*en}{\blank\startnarrow\setupindenting[yes,next]\xmlflush{#1}\stopnarrow\blank}    {\blank\startnarrow\xmlflush{#1}\stopnarrow\blank}
+    %~ check both modes for mainlanguage and language \doifmodeelse{*en}{\blank\startnarrow\setupindenting[yes,next]\xmlflush{#1}\stopnarrow\blank}    {\blank\startnarrow\xmlflush{#1}\stopnarrow\blank}
     \blank\startnarrow\xmlflush{#1}\stopnarrow\blank
 \stopxmlsetups
 
