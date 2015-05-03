@@ -161,31 +161,32 @@
 \stopxmlsetups
 
 \startxmlsetups xml:part
-    \part{\xmlflush{#1}}
+    \part[\xmlattribute{#1}{..//div}{id}]{\xmlflush{#1}}
 \stopxmlsetups
 
 \startxmlsetups xml:h1
-    \chapter{\xmlflush{#1}}
+    %~ \startchapter[bookmark={\xmltext{\xmldocument}{../h1}}, title={\xmlflush{#1}}]\stopchapter
+    \chapter[\xmlattribute{#1}{..//div}{id}]{\xmlflush{#1}}
 \stopxmlsetups
 
 \startxmlsetups xml:h2
-    \section{\xmlflush{#1}}
+    \section[\xmlattribute{#1}{..//div}{id}]{\xmlflush{#1}}
 \stopxmlsetups
 
 \startxmlsetups xml:h3
-    \subsection{\xmlflush{#1}}
+    \subsection[\xmlattribute{#1}{..//div}{id}]{\xmlflush{#1}}
 \stopxmlsetups
 
 \startxmlsetups xml:h4
-    \subsubsection{\xmlflush{#1}}
+    \subsubsection[\xmlattribute{#1}{..//div}{id}]{\xmlflush{#1}}
 \stopxmlsetups
 
 \startxmlsetups xml:h5
-    \subsubsubsection{\xmlflush{#1}}
+    \subsubsubsection[\xmlattribute{#1}{..//div}{id}]{\xmlflush{#1}}
 \stopxmlsetups
 
 \startxmlsetups xml:h6
-    \subsubsubsubsection{\xmlflush{#1}}
+    \subsubsubsubsection[\xmlattribute{#1}{..//div}{id}]{\xmlflush{#1}}
 \stopxmlsetups
 
 \startxmlsetups xml:p
