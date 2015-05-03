@@ -16,10 +16,15 @@
     \xmlsetsetup{\xmldocument}{[@id='bodymatter']}{xml:bodymatter}
     \xmlsetsetup{\xmldocument}{[@id='backmatter']}{xml:backmatter}
     \xmlsetsetup{\xmldocument}{[@id='appendices']}{xml:appendices}
+    \xmlsetsetup{\xmldocument}{[contains(@class,'frontmatter']}{xml:frontmatter}
+    \xmlsetsetup{\xmldocument}{[contains(@class,'bodymatter']}{xml:bodymatter}
+    \xmlsetsetup{\xmldocument}{[contains(@class,'backmatter']}{xml:backmatter}
+    \xmlsetsetup{\xmldocument}{[contains(@class,'appendices']}{xml:appendices}
     \xmlsetsetup{\xmldocument}{[@id='colophon']}{xml:colophon}
     \xmlsetsetup{\xmldocument}{[@class='signature-date']}{xml:signaturedate}
     \xmlsetsetup{\xmldocument}{span[@label]}{xml:logo}
     \xmlsetsetup{\xmldocument}{span[contains(@class,'tex\letterpercent-logo')]}{xml:tex:logo}
+    \xmlsetsetup{\xmldocument}{span[contains(@class,'internal\letterpercent-link')]/a}{xml:internal:link}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteRef']}{xml:footnote:ref}
     \xmlsetsetup{\xmldocument}{div[@class='footnotes']}{}
     \xmlsetsetup{\xmldocument}{a[@class='uri']}{xml:autolink}
@@ -234,6 +239,10 @@
 
 \startxmlsetups xml:a
     \href{\xmlatt{#1}{href}}{\xmlflush{#1}}
+\stopxmlsetups
+
+\startxmlsetups xml:internal:link
+    {\em\doiftext{\in[\xmlatt{#1}{href}]}{\in[\xmlatt{#1}{href}]. }\about[\xmlatt{#1}{href}]}
 \stopxmlsetups
 
 \startxmlsetups xml:autolink
