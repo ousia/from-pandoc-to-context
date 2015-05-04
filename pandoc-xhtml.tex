@@ -25,6 +25,7 @@
     \xmlsetsetup{\xmldocument}{span[@label]}{xml:logo}
     \xmlsetsetup{\xmldocument}{span[contains(@class,'tex\letterpercent-logo')]}{xml:tex:logo}
     \xmlsetsetup{\xmldocument}{span[contains(@class,'internal\letterpercent-link')]/a}{xml:internal:link}
+    \xmlsetsetup{\xmldocument}{[contains(text()='#')]}{xml:internal:link}
     \xmlsetsetup{\xmldocument}{a[@class='footnoteRef']}{xml:footnote:ref}
     \xmlsetsetup{\xmldocument}{div[@class='footnotes']}{}
     \xmlsetsetup{\xmldocument}{a[@class='uri']}{xml:autolink}
