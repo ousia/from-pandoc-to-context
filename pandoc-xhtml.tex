@@ -81,24 +81,50 @@
         {span[contains(@class,'tex\letterpercent-logo')]}
         {xml:tex:logo}
     \xmlsetsetup{\xmldocument}
-        {span[contains(@class,'internal\letterpercent-link')]/a}
+        {a[contains(@href,'\letterhat\letterhash[A-Za-z]')]}
         {xml:internal:link}
     %~ \xmlsetsetup{\xmldocument}
             %~ {[contains(text()='#')]}
             %~ {xml:internal:link}
-    \xmlsetsetup{\xmldocument}{a[@class='footnoteRef']}{xml:footnote:ref}
-    \xmlsetsetup{\xmldocument}{div[@class='footnotes']}{}
-    \xmlsetsetup{\xmldocument}{a[@class='uri']}{xml:autolink}
-    \xmlsetsetup{\xmldocument}{a[@class='footnoteBack']}{}
-    \xmlsetsetup{\xmldocument}{a[text()='↩']}{}
-    \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: decimal']}{xml:ol}
-    \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: lower-alpha']}{xml:loweralphalist}
-    \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: upper-alpha']}{xml:upperalphalist}
-    \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: lower-roman']}{xml:lowerromanlist}
-    \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: upper-roman']}{xml:upperromanlist}
-    \xmlsetsetup{\xmldocument}{ol[@style='list-style-type: lower-greek']}{xml:lowergreeklist}
-    \xmlsetsetup{\xmldocument}{div[contains(@class,'options')]/dl/dt}{xml:dt_options}
-    \xmlsetsetup{\xmldocument}{div[contains(@class,'options')]/dl/dl}{xml:dl_options}
+    \xmlsetsetup{\xmldocument}
+        {a[@class='footnoteRef']}
+        {xml:footnote:ref}
+    \xmlsetsetup{\xmldocument}
+        {div[@class='footnotes']}
+        {}
+    \xmlsetsetup{\xmldocument}
+        {a[@class='uri']}
+        {xml:autolink}
+    \xmlsetsetup{\xmldocument}
+        {a[@class='footnoteBack']}
+        {}
+    \xmlsetsetup{\xmldocument}
+        {a[text()='↩']}
+        {}
+    \xmlsetsetup{\xmldocument}
+        {ol[@style='list-style-type: decimal']}
+        {xml:ol}
+    \xmlsetsetup{\xmldocument}
+        {ol[@style='list-style-type: lower-alpha']}
+        {xml:loweralphalist}
+    \xmlsetsetup{\xmldocument}
+        {ol[@style='list-style-type: upper-alpha']}
+        {xml:upperalphalist}
+    \xmlsetsetup{\xmldocument}
+        {ol[@style='list-style-type: lower-roman']}
+        {xml:lowerromanlist}
+    \xmlsetsetup{\xmldocument}
+        {ol[@style='list-style-type: upper-roman']}
+        {xml:upperromanlist}
+    \xmlsetsetup{\xmldocument}
+        {ol[@style='list-style-type: lower-greek']}
+        {xml:lowergreeklist}
+    \xmlsetsetup{\xmldocument}
+        {div[contains(@class,'options')]/dl/dt}
+        {xml:dt_options}
+    \xmlsetsetup{\xmldocument}
+        {div[contains(@class,'options')]/dl/dl}
+        {xml:dl_options}
 \stopxmlsetups
 
 \xmlregistersetup{xml:pandoc}
