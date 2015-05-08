@@ -83,9 +83,6 @@
     \xmlsetsetup{\xmldocument}
         {a[contains(@href,'\letterhat\letterhash[A-Za-z]')]}
         {xml:internal:link}
-    %~ \xmlsetsetup{\xmldocument}
-            %~ {[contains(text()='#')]}
-            %~ {xml:internal:link}
     \xmlsetsetup{\xmldocument}
         {a[@class='footnoteRef']}
         {xml:footnote:ref}
@@ -330,7 +327,7 @@
 \stopxmlsetups
 
 \startxmlsetups xml:internal:link
-    {\em\doiftext{\in[\xmlatt{#1}{href}]}{\in[\xmlatt{#1}{href}]. }\about[\xmlatt{#1}{href}]}
+    {\em\doiftext{\in[\cldcontext{string.sub([[\xmlatt{#1}{href}]],2)}]}{\in[\cldcontext{string.sub([[\xmlatt{#1}{href}]],2)}]. }\about[\cldcontext{string.sub([[\xmlatt{#1}{href}]],2)}]}
 \stopxmlsetups
 
 \startxmlsetups xml:autolink
