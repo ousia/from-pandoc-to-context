@@ -6,8 +6,20 @@
         {pre/code}
         {xml:pre:code}
     \xmlsetsetup{\xmldocument}
-        {head}
+        {head/style}
         {}
+    \xmlsetsetup{\xmldocument}
+        {head/meta[@name='date']}
+        {}
+    \xmlsetsetup{\xmldocument}
+        {head/title}
+        {xml:doc:title}
+    \xmlsetsetup{\xmldocument}
+        {head/meta[@name='subtitle']}
+        {xml:doc:subtitle}
+    \xmlsetsetup{\xmldocument}
+        {head/meta[@name='author']}
+        {xml:doc:author}
     \xmlsetsetup{\xmldocument}
         {(div|span)[@lang]}
         {xml:lang}
@@ -135,8 +147,16 @@
     \xmlflush{#1}
 \stopxmlsetups
 
-\startxmlsetups xml:head
-    \xmlflush{#1}
+\startxmlsetups xml:doc:title
+    \setupinteraction[title={\xmlflush{#1}}]
+\stopxmlsetups
+
+\startxmlsetups xml:doc:subtitle
+    \setupinteraction[subtitle={\xmlatt{#1}{content}}]
+\stopxmlsetups
+
+\startxmlsetups xml:doc:author
+    \setupinteraction[author={\xmlatt{#1}{content}}]
 \stopxmlsetups
 
 \startxmlsetups xml:titlepage
