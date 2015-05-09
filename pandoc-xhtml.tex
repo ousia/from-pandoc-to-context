@@ -327,7 +327,7 @@
 \stopxmlsetups
 
 \startxmlsetups xml:internal:link
-    {\em\doiftext{\in[\cldcontext{string.sub([[\xmlatt{#1}{href}]],2)}]}{\in[\cldcontext{string.sub([[\xmlatt{#1}{href}]],2)}]. }\about[\cldcontext{string.sub([[\xmlatt{#1}{href}]],2)}]}
+    {\em\doiftext{\in[\xmlrefatt{#1}{href}]}{\in[\xmlrefatt{#1}{href}]. }\about[\xmlrefatt{#1}{href}]}
 \stopxmlsetups
 
 \startxmlsetups xml:autolink
