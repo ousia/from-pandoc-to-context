@@ -21,6 +21,9 @@
         {head/meta[@name='author']}
         {xml:doc:author}
     \xmlsetsetup{\xmldocument}
+        {h2[contains(@class,'author')]}
+        {xml:title:author}
+    \xmlsetsetup{\xmldocument}
         {(div|span)[@lang]}
         {xml:lang}
     \xmlsetsetup{\xmldocument}
@@ -155,14 +158,16 @@
     \setupinteraction[subtitle={\xmlatt{#1}{content}}]
 \stopxmlsetups
 
-\startxmlsetups xml:doc:author
-    \setupinteraction[author={\xmlatt{#1}{content}}]
+\startxmlsetups xml:title:author
+    \xmlflush{#1}
 \stopxmlsetups
 
 \startxmlsetups xml:titlepage
+    \setupinteraction
+        [author={\xmlconcat{#1}{/h2[contains(@class,'author')]}{, }}]
     \startcoverpagemakeup
         \setupbodyfont[svb]
-        {\setupbodyfont[25pt]\sc \xmltext{#1}{h2[@class='author']}}
+        {\setupbodyfont[25pt]\sc \xmlconcat{#1}{/h2[contains(@class,'author')]}{\\}}
         \vfill
         \scale[width=\textwidth]{\bf \xmltext{#1}{h1[@class='title']}}
 
@@ -184,7 +189,7 @@
 
         {\itd \xmltext{#1}{h1[@class='title']}\par}\blank[big]
         {\resetbreakpoints\itb\setupinterlinespace \xmltext{#1}{h1[@class='subtitle']}\par}\blank[3*big]
-        {\sc \xmltext{#1}{h2[@class='author']}}
+        {\sc \xmlconcat{#1}{/h2[contains(@class,'author')]}{\\}}
 
         \vfill
         \xmltext{#1}{h3[@class='date']}
