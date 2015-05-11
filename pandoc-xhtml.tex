@@ -60,28 +60,16 @@
         {[@id='epigraph']}
         {xml:epigraph}
     \xmlsetsetup{\xmldocument}
-        {[@id='frontmatter']}
+        {[@id='frontmatter' or contains(@class,'frontmatter')]}
         {xml:frontmatter}
     \xmlsetsetup{\xmldocument}
-        {[@id='bodymatter']}
+        {[@id='bodymatter' or contains(@class,'bodymatter')]}
         {xml:bodymatter}
     \xmlsetsetup{\xmldocument}
-        {[@id='backmatter']}
+        {[@id='backmatter' or contains(@class,'backmatter')]}
         {xml:backmatter}
     \xmlsetsetup{\xmldocument}
-        {[@id='appendices']}
-        {xml:appendices}
-    \xmlsetsetup{\xmldocument}
-        {[contains(@class,'frontmatter')]}
-        {xml:frontmatter}
-    \xmlsetsetup{\xmldocument}
-        {[contains(@class,'bodymatter')]}
-        {xml:bodymatter}
-    \xmlsetsetup{\xmldocument}
-        {[contains(@class,'backmatter')]}
-        {xml:backmatter}
-    \xmlsetsetup{\xmldocument}
-        {[contains(@class,'appendices')]}
+        {[@id='appendices' or contains(@class,'appendices')]}
         {xml:appendices}
     \xmlsetsetup{\xmldocument}
         {[@id='colophon']}
@@ -90,10 +78,7 @@
         {[@class='signature-date']}
         {xml:signaturedate}
     \xmlsetsetup{\xmldocument}
-        {span[@label]}
-        {xml:logo}
-    \xmlsetsetup{\xmldocument}
-        {span[contains(@class,'tex\letterpercent-logo')]}
+        {span[@label or contains(@class,'tex\letterpercent-logo')]}
         {xml:tex:logo}
     \xmlsetsetup{\xmldocument}
         {a[contains(@href,'\letterhat\letterhash[A-Za-z]')]}
@@ -236,7 +221,6 @@
 \startxmlsetups xml:backmatter
     \startbackmatter
     \xmlflush{#1}
-    \stopbackmatter
 \stopxmlsetups
 
 \startxmlsetups xml:appendices
@@ -245,7 +229,6 @@
 \stopxmlsetups
 
 \startxmlsetups xml:colophon
-    \stopbodymatter
     \startbackmatter
     \startnotmode[nofootnotes]
     \def\Footnotes_Title{\startmode[*en]\chapter{Notes}\stopmode\startmode[*es]\chapter{Notas}\stopmode\startmode[*deo]\chapter{Notizen}\stopmode\startmode[*de]\chapter{Notizen}\stopmode\startmode[*fr]\chapter{Notes}\stopmode}
