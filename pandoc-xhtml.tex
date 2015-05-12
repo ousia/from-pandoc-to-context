@@ -2,123 +2,159 @@
     \xmlsetsetup{\xmldocument}
         {html|body|div|h1|h2|h3|h4|h5|h6|p|blockquote|span|em|q|b|strong|a|ul|ol|li|dl|dt|dd|hr|br|sup|sub|code}
         {xml:*}
+
     \xmlsetsetup{\xmldocument}
         {pre/code}
         {xml:pre:code}
+
     \xmlsetsetup{\xmldocument}
         {head/style}
         {}
+
     \xmlsetsetup{\xmldocument}
         {head/meta[@name='date']}
         {}
+
     \xmlsetsetup{\xmldocument}
         {head/title}
         {xml:doc:title}
+
     \xmlsetsetup{\xmldocument}
         {head/meta[@name='subtitle']}
         {xml:doc:subtitle}
+
     \xmlsetsetup{\xmldocument}
         {head/meta[@name='author']}
         {xml:doc:author}
+
     \xmlsetsetup{\xmldocument}
         {h2[contains(@class,'author')]}
         {xml:title:author}
+
     \xmlsetsetup{\xmldocument}
         {(div|span)[@lang]}
         {xml:lang}
+
     \xmlsetsetup{\xmldocument}
         {[contains(@class,'part')]/h1}
         {xml:part}
+
     \xmlsetsetup{\xmldocument}
         {[contains(@class,'part')]/[contains(@class,'level2')]/h2}
         {xml:h1}
+
     \xmlsetsetup{\xmldocument}
         {[contains(@class,'part')]/[contains(@class,'level2')]/[contains(@class,'level3')]/h3}
         {xml:h2}
+
     \xmlsetsetup{\xmldocument}
         {[contains(@class,'part')]/[contains(@class,'level2')]/[contains(@class,'level3')]/[contains(@class,'level4')]/h4}
         {xml:h3}
+
     \xmlsetsetup{\xmldocument}
         {[contains(@class,'part')]/[contains(@class,'level2')]/[contains(@class,'level3')]/[contains(@class,'level4')]/[contains(@class,'level5')]/h5}
         {xml:h4}
+
     \xmlsetsetup{\xmldocument}
         {[contains(@class,'hidden')]/h1}
         {xml:hidden}
+
     \xmlsetsetup{\xmldocument}
         {[@id='header']}
         {xml:titlepage}
+
     \xmlsetsetup{\xmldocument}
-        {[@class='rights']}
+        {[@id='copyright' or contains(@class,'rights') or contains(@class,'copyright')]}
         {xml:rights}
+
     \xmlsetsetup{\xmldocument}
-        {[@id='copyright']}
-        {xml:rights}
-    \xmlsetsetup{\xmldocument}
-        {[@id='dedication']}
+        {[@id='dedication' or contains(@class,'dedication')]}
         {xml:dedication}
+
     \xmlsetsetup{\xmldocument}
-        {[@id='epigraph']}
+        {[@id='epigraph' or contains(@class,'epigraph')]}
         {xml:epigraph}
+
     \xmlsetsetup{\xmldocument}
         {[@id='frontmatter' or contains(@class,'frontmatter')]}
         {xml:frontmatter}
+
     \xmlsetsetup{\xmldocument}
         {[@id='bodymatter' or contains(@class,'bodymatter')]}
         {xml:bodymatter}
+
     \xmlsetsetup{\xmldocument}
         {[@id='backmatter' or contains(@class,'backmatter')]}
         {xml:backmatter}
+
     \xmlsetsetup{\xmldocument}
         {[@id='appendices' or contains(@class,'appendices')]}
         {xml:appendices}
+
     \xmlsetsetup{\xmldocument}
         {[@id='colophon']}
         {xml:colophon}
+
     \xmlsetsetup{\xmldocument}
         {[@class='signature-date']}
         {xml:signaturedate}
+
     \xmlsetsetup{\xmldocument}
         {span[@label or contains(@class,'tex\letterpercent-logo')]}
         {xml:tex:logo}
+
     \xmlsetsetup{\xmldocument}
         {a[contains(@href,'\letterhat\letterhash[A-Za-z]')]}
         {xml:internal:link}
+
     \xmlsetsetup{\xmldocument}
         {a[@class='footnoteRef']}
         {xml:footnote:ref}
+
     \xmlsetsetup{\xmldocument}
         {div[@class='footnotes']}
         {}
+
     \xmlsetsetup{\xmldocument}
         {a[@class='uri']}
         {xml:autolink}
+
     \xmlsetsetup{\xmldocument}
         {a[@class='footnoteBack']}
         {}
+
     \xmlsetsetup{\xmldocument}
         {a[text()='↩']}
         {}
+
     \xmlsetsetup{\xmldocument}
         {ol[@style='list-style-type: decimal']}
         {xml:ol}
+
     \xmlsetsetup{\xmldocument}
         {ol[@style='list-style-type: lower-alpha']}
         {xml:loweralphalist}
+
     \xmlsetsetup{\xmldocument}
         {ol[@style='list-style-type: upper-alpha']}
         {xml:upperalphalist}
+
     \xmlsetsetup{\xmldocument}
         {ol[@style='list-style-type: lower-roman']}
         {xml:lowerromanlist}
+
     \xmlsetsetup{\xmldocument}
         {ol[@style='list-style-type: upper-roman']}
         {xml:upperromanlist}
+
     \xmlsetsetup{\xmldocument}
         {ol[@style='list-style-type: lower-greek']}
         {xml:lowergreeklist}
+
     \xmlsetsetup{\xmldocument}
         {div[contains(@class,'options')]/dl/dt}
         {xml:dt_options}
+
     \xmlsetsetup{\xmldocument}
         {div[contains(@class,'options')]/dl/dl}
         {xml:dl_options}
