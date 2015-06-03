@@ -363,7 +363,9 @@
 \stopxmlsetups
 
 \startxmlsetups xml:strong % used for sans-serif instead of bold
-    \begingroup\ss\xmlflush{#1}\endgroup
+    \doifmodeelse{strong:ssandnotbf}
+    {\begingroup\ss\xmlflush{#1}\endgroup}
+    {\begingroup\bf\xmlflush{#1}\endgroup}
 \stopxmlsetups
 
 \startxmlsetups xml:a
