@@ -1,40 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <title>From pandoc to ConTeXt by ousia</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>From pandoc to ConTeXt by ousia</title>
   </head>
-
   <body>
-    <div id="container">
-      <div class="inner">
+    <div class="wrapper">
+      <header>
+        <h1 class="header">From pandoc to ConTeXt</h1>
+        <p class="header">compiling pandoc XHTML with ConTeXt</p>
 
-        <header>
-          <h1>From pandoc to ConTeXt</h1>
-          <h2>compiling pandoc XHTML with ConTeXt</h2>
-        </header>
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/ousia/from-pandoc-to-context/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/ousia/from-pandoc-to-context/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/ousia/from-pandoc-to-context">View On GitHub</a></li>
+        </ul>
 
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/ousia/from-pandoc-to-context/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/ousia/from-pandoc-to-context/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/ousia/from-pandoc-to-context" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/ousia">ousia</a></p>
 
-        <hr>
 
-        <section id="main_content">
-          <h1>
+      </header>
+      <section>
+        <h1>
 <a id="pandoc-xhtml" class="anchor" href="#pandoc-xhtml" aria-hidden="true"><span class="octicon octicon-link"></span></a>pandoc-xhtml</h1>
 
-<p>This</p>
+<p><code>pandoc-xhtml.tex</code> offers a way to compile <em>Markdown</em> documents with ConTeXt. <code>pandoc-xhtml.tex</code> is an environment, which is what ConTeXt needs to compile XML sources directly.</p>
+
+<p>With the proper environment, ConTeXt deals with XML natively. It doesn’t need any intermediate format. Not even a ConTeXt source file cotaining the text to be typeset.</p>
+
+<h2>
+<a id="why-not-the-standard-way" class="anchor" href="#why-not-the-standard-way" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why Not the Standard Way?</h2>
+
+<p><code>pandoc</code> can generate ConTeXt documents from <em>Markdown</em> sources. But this way you’ll miss:</p>
+
+<ul>
+<li><p>Main document language information.</p></li>
+<li><p>Markup for language in text portions.</p></li>
+<li><p>Any <code>&lt;div&gt;</code> or <code>&lt;span&gt;</code> elements markup.</p></li>
+</ul>
+
+<p>Generating the PDF document from XML sources with ConTeXt avoids loosing relevant information (such as language, which result in wrong hyphenation) or special layout for block or inline elements.</p>
+
+<p>Going this way, the <em>Mardown</em> source document may fullfill the promise:</p>
+
+<blockquote>
+<p>One source to generate them all.</p>
+</blockquote>
+
+<h2>
+<a id="status" class="anchor" href="#status" aria-hidden="true"><span class="octicon octicon-link"></span></a>Status</h2>
+
+<p>This project is still work in progress. I have used myself to publish a book and some other documents. It fits my needs.</p>
+
+<p>Of course, my documents may contain code, but no math. My texts contain some expressions in foreign languages and some code.</p>
+
+<p>The documentation needs some polishing to be released. I hope to have it finished by the end of June 2015.</p>
+
+<p>If you find something that can be improved or you want to comment anything related to the project, please <a href="https://github.com/ousia/from-pandoc-to-context/issues/new">open an issue</a>.</p>
 
 <h2>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
@@ -42,15 +73,19 @@
 <p>The environment file from this project (<code>pandoc-xhtml.tex</code>) is licensed to the public under the GNU General Public License; either <a href="https://www.gnu.org/licenses/gpl-2.0.html">version 2</a>, or (at your option) any <a href="https://www.gnu.org/licenses/gpl.html">later version</a>.</p>
 
 <p>The documentation is released under the <a href="https://creativecommons.org/licenses/by-sa/4.0/"><em>Creative Commons</em> Attribution–ShareAlike 4.0 International license</a>.</p>
-        </section>
 
-        <footer>
-          From pandoc to ConTeXt is maintained by <a href="https://github.com/ousia">ousia</a><br>
-          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
+<h2>
+<a id="acknowledgments" class="anchor" href="#acknowledgments" aria-hidden="true"><span class="octicon octicon-link"></span></a>Acknowledgments</h2>
 
-        
-      </div>
+<p>This work was based on the extraordinary achievements of John MacFarlane and Hans Hagen.</p>
+
+<p>I want to thank them for their software and their help.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
     </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
   </body>
 </html>
