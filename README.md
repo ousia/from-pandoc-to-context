@@ -40,4 +40,4 @@ The documentation is released under the [_Creative Commons_ Attribution–ShareA
 
 This work was based on the extraordinary achievements of John MacFarlane and Hans Hagen.
 
-I thank them very much for their software and their help.
+I want to thank them for their software and their help.
