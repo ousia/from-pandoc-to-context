@@ -1,10 +1,12 @@
 # pandoc-xhtml
 
-`pandoc-xhtml.tex` offers a way to compile _Markdown_ documents with ConTeXt. `pandoc-xhtml.tex` is an environment, which is what ConTeXt needs to compile XML sources directly.
+`pandoc-xhtml.tex` offers a way to compile _Markdown_ documents with ConTeXt.
+
+`pandoc-xhtml.tex` is an environment, which is what ConTeXt needs to compile XML sources directly.
 
 With the proper environment, ConTeXt deals with XML natively. It doesn’t need any intermediate format. Not even a ConTeXt source file cotaining the text to be typeset.
 
-## Why Not the Standard Way?
+## What Is Wrong with ConTeXt Sources?
 
 `pandoc` can generate ConTeXt documents from _Markdown_ sources. But this way you’ll miss:
 
