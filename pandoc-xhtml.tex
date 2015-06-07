@@ -185,7 +185,10 @@
 
 \startxmlsetups xml:titlepage
     \setupinteraction
-        [author={\xmlconcat{#1}{/h2[contains(@class,'author')]}{, }}]
+        [author={\xmlconcat{#1}{/h2[contains(@class,'author')]}{, }},
+         keyword={\xmldoifelse{#1}{p[@class='publisher']/a}
+                    {\xmltext{#1}{p[@class='publisher']/a}}
+                    {\xmltext{#1}{p[@class='publisher']}}}]
     \startcoverpagemakeup
         \setupbodyfont[svb]
         {\setupbodyfont[25pt]\sc \xmlconcat{#1}{/h2[contains(@class,'author')]}{\\}}
