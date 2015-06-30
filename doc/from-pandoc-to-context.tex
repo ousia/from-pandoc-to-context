@@ -1,0 +1,515 @@
+\startluacode
+
+    function document.addfunnyhyphen(tfmdata)
+        local underscore = utf.byte("_")
+        local char       = tfmdata.characters[underscore]
+        if not char then return end
+        tfmdata.characters[0xFE000]   = {
+            width    = 0,
+            height   = 0,
+            depth    = 0,
+            commands = {
+                { "right", -char.width },
+                { "down", char.depth },
+                { "slot", 1, underscore },
+            }
+        }
+    end
+
+
+utilities.sequencers.appendaction("aftercopyingcharacters","after","document.addfunnyhyphen")
+
+\stopluacode
+
+\definehyphenationfeatures
+    [underscore]
+    [righthyphenchar="FE000]
+
+\setuphyphenation
+    [method=traditional]
+
+\sethyphenationfeatures
+    [strict]
+
+%~ \showframe\showgrid
+\startmode[letter]
+    \setuppapersize
+        [letter]
+\setuplayout
+    [setups=*lessstrict,
+     backspace=2.18cm,
+     width=middle,
+     topspace=2cm,
+     bottomspace=1.25cm,
+     height=middle,
+     header=0cm,
+     footer=1.5cm]
+\stopmode
+
+\setuplanguage
+    [en]
+    [spacing=packed]
+{\en \hyphenation{MacOS}}
+
+\startnotmode[letter]
+    \setuplayout
+    [setups=*lessstrict,
+     backspace=2.5cm,
+     width=middle,
+     topspace=2cm,
+     bottomspace=1.25cm,
+     height=middle,
+     header=0cm,
+     footer=1.5cm]
+\stopnotmode
+
+\startsetups[*lessstrict]
+    \setup[reset]
+    \widowpenalty=10000
+    \clubpenalty=10000
+    \brokenpenalty=0
+\stopsetups
+
+
+\definefontfeature
+    [noliga]
+    [liga=no]
+
+\definefontfeature
+    [hebrew]
+    [lang=heb,
+     script=hebr]
+
+\definefontfeature[default]
+    [default]
+    [expansion=hz,
+     protrusion=hanging,
+     script=latn]
+
+\definefontfeature
+    [default]
+    [default]
+    [script=latn,
+     expansion=quality,
+     protrusion=quality,
+     itlc=yes,
+     textitalics=yes,
+     lnum=yes]
+
+\setupitaliccorrection
+    [global, always]
+
+\setupalign
+    [hanging, hz]
+
+\setuppagenumbering
+    [page=,
+     alternative=doublesided,
+     location={bottom,right}]
+
+
+\definebreakpoint
+    [compound]
+    [—]% em-dash
+
+\definebreakpoint
+    [compound]
+    [–]% en-dash
+
+\setbreakpoints
+    [compound]
+
+
+\definestructureresetset
+    [default]
+    [1,0,1]
+    [1] % reset part, chapter, but not section
+
+\setupheads
+    [sectionresetset=default,
+     sectionconversionset=sectionnumbers]
+
+\definepagebreak
+    [pagebreak:part]
+    [yes, header, footer, right]
+
+\definepagebreak
+    [pagebreak:chapter]
+    [yes, header, footer]
+
+\definefontfeature
+    [section]
+    [onum=yes,smcp=yes,c2sc=yes]
+
+\definestructureconversionset
+    [sectionnumbers]
+    [0,n,Characters,n,g]
+    [n]
+
+\definestructureconversionset
+    [appendix:sectionnumbers]
+    [0,Characters,n,g,characters]
+    [n]
+
+\setuphead
+    [part]
+    [align=center,
+     page={pagebreak:part},
+     before={\mbox{}\vfill},
+     after={\vfill\mbox{}},
+     number=no,
+     placehead=yes,
+     style=\tfc\addfs{section},
+     header=empty,
+     footer=empty]
+
+\setuphead
+    [chapter,title]
+    [style=\ita,
+     align=center,
+     after={\blank[3*line]},
+     page=pagebreak:chapter,
+     sectionsegments=chapter,
+     header=empty]
+
+\setuphead
+    [section]
+    [alternative=inmargin,
+     style=\it,
+     before={\blank[4*small]},
+     after={\blank[samepage,3*small]},
+     sectionsegments=section]
+
+\setuphead
+    [subsection]
+    [sectionsegments=subsection,
+     number=no,
+     before={\blank[big]},
+     after={\blank[samepage,big]}]
+
+\setuphead
+    [subsubsection]
+    [margin=1em]
+
+
+\setupitemize
+    [each]
+    [loose]
+    [margin=yes,
+     blank=halfline,
+     indenting=no]
+
+
+\setuptyping
+    [margin=yes,
+     align={right,broad},
+     blank=halfline]
+
+\definetype
+    [TeXcode]
+    [option=TEX]
+
+\definetype
+    [TeXspace]
+    [option=TEX,space=on]
+
+\def\ConTeXt{Con\-\TeX{}t}
+
+
+\definefallbackfamily
+    [mainface]
+    [rm]
+    [GFS Didot]
+    [preset=range:greek]
+
+\definefontfamily
+    [mainface]
+    [rm]
+    [TeX Gyre Pagella]
+
+\definefontfamily
+    [mainface]
+    [mm]
+    [TeX Gyre Pagella Math]
+
+\definefontfamily
+    [mainface]
+    [ss]
+    [URWClassico]
+
+\definefontfamily
+    [mainface]
+    [tt]
+    [Cousine]
+    [features=none,
+     scale=0.875]
+
+\definefontfamily
+    [ornamenta]
+    [rm]
+    [TypographyTribute]
+
+\setupbodyfont
+    [mainface, 16pt]
+
+\definefontsize
+    [xy]
+
+\definefontsize
+    [xxxx]
+
+\setupbodyfontenvironment
+    [default]
+    [xy=.9,
+     xxxx=0.45,
+     em=italic]
+
+
+\setupwhitespace[medium]
+
+
+\setupinteraction
+    [state=start,
+     color=,
+     style=,
+     contrastcolor=,
+     focus=standard]
+
+\enabledirectives
+    [references.border]
+
+\placebookmarks
+    [part,chapter,section,subsection,subsubsection]
+    [part,chapter]
+
+\setupinteractionscreen
+    [width=fit,
+     option=bookmark]
+
+\setupcombinedlist
+    [content]
+    [interaction=all]
+
+\setuplist
+    [part]
+    [alternative=b,
+     pagenumber=no,
+     align=center,
+     textstyle=\tf]
+
+
+\startmode[letter]
+    \setuplist
+        [chapter]
+        [before=]
+\stopmode
+
+\startnotmode[letter]
+    \setuplist
+    [chapter]
+    [before={\blank[small]}]
+\stopnotmode
+
+
+\setupindenting
+    [yes, medium, always]
+
+\setupinterlinespace
+    [line=3.05ex]
+
+\setupwhitespace
+    [medium]
+
+%~ \setupnarrower[narrow][before=blank, after=blank]
+
+\setupnote
+    [footnote]
+    [way=bytext,
+     location=text,
+     split=verystrict,
+     scope=text,
+     align=strict,
+     rule=off,
+     numberstyle=\tf,
+     bodyfont=,
+     before=\vskip0pt,
+     textcommand={\hairspace\high},
+     before=\directsetup{setups:footnotes}]
+
+\setupnotation
+    [footnote]
+    [numbercommand=\tfxy,
+     numberconversion=numerals,
+     alternative=serried,
+     style=\tfxy]
+
+
+\setupreferencestructureprefix
+    [default]
+    [prefixsegments=2:4]
+
+\setupreferencing
+    [left=,
+     right=,
+     interaction=all]
+
+
+\definesectionblock
+    [whatcomesfirst]
+    [firstmatter]
+
+\setupsectionblock
+    [firstmatter]
+    [page=pagebreak:
+    part, after=\page]
+
+\startsectionblockenvironment[whatcomesfirst]
+    \setuppagenumbering
+        [location=]
+    \setupinterlinespace
+        [line=2.8ex]
+\stopsectionblockenvironment
+
+\setupsectionblock
+    [frontpart]
+    [page=pagebreak:part,
+     after=\page]
+
+\setupsectionblock
+    [bodypart]
+    [page=pagebreak:part, after=\page]
+
+\startsectionblockenvironment[bodypart]
+    \writebetweenlist
+        [chapter]
+        {{\blank[3*halfline]}}
+\stopsectionblockenvironment
+
+\setupsectionblock
+    [backpart]
+    [page=pagebreak:part,
+     after=\page]
+
+\startsectionblockenvironment[backpart]
+    \writebetweenlist
+        [chapter]
+        {{\blank[3*halfline]}}
+\stopsectionblockenvironment
+
+\setupsectionblock
+    [appendix]
+    [page=pagebreak:part,
+     after=\page]
+
+\startsectionblockenvironment[appendix]
+    \writebetweenlist
+        [chapter]
+        {{\blank[3*halfline]}}
+\stopsectionblockenvironment
+
+\startsetups[setups:copyright]
+    \setupinterlinespace
+        [line=3ex]
+    \setupwhitespace
+        [small]
+    \setupindenting
+        [always, 0pt]
+\stopsetups
+
+\startsetups[setups:colophon]
+    \setupinterlinespace
+        [line=3ex]
+    \setupwhitespace
+        [medium]
+    \setupindenting
+        [always, 0pt]
+\stopsetups
+
+\startsetups[setups:footnotes]
+    \setupinterlinespace
+        [line=2.85ex]
+    \setupindenting
+        [always, 0pt]
+\stopsetups
+
+\startsetups[setups:dedication]
+    \setupwhitespace
+        [big]
+\stopsetups
+
+
+\definemakeup
+    [coverpage]
+    [pagestate=start]
+
+\setuplayout
+    [coverpage]
+        [header=0cm,
+         footer=0cm,
+         backspace=2cm,
+         width=middle]% topspace=2cm, height=fit]
+
+
+\definemakeup
+    [titlepage]
+    [align={middle},
+     doublesided=no,
+     pagestate=start]
+
+\definemakeup
+    [copyright]
+    [top=,
+     style={\tfx\setupinterlinespace},
+     setups=setups:copyright,
+     page=no,
+     pagestate=start]
+
+\setuplayout
+    [copyright]
+    [backspace=.1\textwidth,
+     width=middle]
+
+\definemakeup
+    [colophon]
+    [align=middle,
+     style={\tfx\setupinterlinespace},
+     doublesided=no,
+     page=pagebreak:part,
+     pagestate=start,
+     setups=setups:colophon]
+
+\setuplayout
+    [colophon]
+    [backspace=.3\textwidth,
+     width=middle]
+
+\definemakeup
+    [dedication]
+    [style=\em,
+     top=\vskip.1\paperheight,
+     setups=setups:dedication,
+     align={left, nothyphenated},
+     pagestate=start]
+
+\setuplayout
+    [dedication]
+    [backspace=.675\textwidth,
+     cutspace=\cutspace,
+     width=middle]
+
+\definemakeup
+    [epigraph]
+    [top=\vskip.2\paperheight,
+     align={flushright, nothyphenated},
+     pagestate=start]
+
+\setuplayout
+    [epigraph]
+    [backspace=.35\paperwidth,
+     cutspace=\cutspace,
+     width=middle]
+
+\sethyphenatedurlafter
+    {:./=-}
+
+\input ../pandoc-xhtml.tex
