@@ -57,7 +57,7 @@
 
     \xmlsetsetup{\xmldocument}
         {[contains(@class,'hidden')]/h1}
-        {xml:hidden}
+        {xml:hidden:h1}
 
     \xmlsetsetup{\xmldocument}
         {[@id='header']}
@@ -289,10 +289,9 @@
 \stopxmlsetups
 
 \startxmlsetups xml:lang
-     \begingroup
-         \language[\xmlatt{#1}{lang}]
-         \xmlsetup{#1}{xml:\xmltag{#1}}
-     \endgroup
+    \bgroup
+        \language[\xmlatt{#1}{lang}]\xmlsetup{#1}{xml:\xmltag{#1}}
+    \egroup
 \stopxmlsetups
 
 \startxmlsetups xml:part
@@ -350,7 +349,7 @@
 \stopxmlsetups
 
 \startxmlsetups xml:em
-    \begingroup\em\xmlflush{#1}\endgroup
+    \bgroup\em\xmlflush{#1}\egroup
 \stopxmlsetups
 
 \startxmlsetups xml:q
@@ -358,21 +357,21 @@
 \stopxmlsetups
 
 \startxmlsetups xml:b
-    \begingroup\bf\xmlflush{#1}\endgroup
+    \bgroup\bf\xmlflush{#1}\egroup
 \stopxmlsetups
 
 \startxmlsetups xml:pre:code
-    \begingroup\setupinterlinespace[line=2.8ex]\xmlprettyprint{#1}{none}\endgroup
+    \bgroup\setupinterlinespace[line=2.8ex]\xmlprettyprint{#1}{none}\egroup
 \stopxmlsetups
 
 \startxmlsetups xml:code % need extra code to work
-    \begingroup\sethyphenationfeatures[underscore]\tt\xmlflushspacewise{#1}\endgroup
+    \bgroup\sethyphenationfeatures[underscore]\tt\xmlflushspacewise{#1}\egroup
 \stopxmlsetups
 
 \startxmlsetups xml:strong % used for sans-serif instead of bold
     \doifmodeelse{strong:ssandnotbf}
-    {\begingroup\ss\xmlflush{#1}\endgroup}
-    {\begingroup\bf\xmlflush{#1}\endgroup}
+    {\bgroup\ss\xmlflush{#1}\egroup}
+    {\bgroup\bf\xmlflush{#1}\egroup}
 \stopxmlsetups
 
 \startxmlsetups xml:a
@@ -630,7 +629,7 @@
 
 %%% This a simple method to have interactive hyperlinks
 
-\def\url#1{\begingroup\tt\hw\goto{\hyphenatedurl{#1}}[url(#1)]\endgroup}
+\def\url#1{\bgroup\tt\hw\goto{\hyphenatedurl{#1}}[url(#1)]\egroup}
 \def\href#1#2{\goto{#2} [url(#1)]}
 
 %%% Two samples for definition lists
@@ -648,6 +647,51 @@
 \definemakeup[dedication]
 \definemakeup[epigraph]
 \definemakeup[colophon]
+
+%%% These commands remove unwanted code in bookmarks.
+
+\appendtoks
+    \let\em\space
+\to \simplifiedcommands
+
+\appendtoks
+    \let\tt\space
+\to \simplifiedcommands
+
+\appendtoks
+    \let\ss\space
+\to \simplifiedcommands
+
+\appendtoks
+    \let\bgroup\space
+\to \simplifiedcommands
+
+\appendtoks
+    \let\egroup\space
+\to \simplifiedcommands
+
+\appendtoks
+    \let\sethyphenationfeatures\space
+\to \simplifiedcommands
+
+\appendtoks
+    \let\en\space
+\to \simplifiedcommands
+
+\appendtoks
+    \let\agr\space
+\to \simplifiedcommands
+
+\appendtoks
+    \let\es\space
+\to \simplifiedcommands
+
+\appendtoks
+    \let\de\space
+\to \simplifiedcommands
+
+%%% the current setup. They need to be configured (setup)
+%%% when if we want to use them (otherwise we get only defaults).
 
 %%% These are language synonyms, so that XML values can match
 %%% ConTeXt values (btw, ConTeXt seems to have less languages
