@@ -606,14 +606,14 @@
 %%% Sp you get standard text in other formats and logos with ConTeXt
 
 \startxmlsetups xml:logo
-    \executeifdefined{\utfupper{\xmlatt{#1}{label}}}{{\tttf ???}}
+    \executeifdefined{\xmlatt{#1}{label}}{{\tttf ???}}
 \stopxmlsetups
 
 %%% alternate TeX logos
 %%% <span class="tex-logo">TeX</span>
 
 \startxmlsetups xml:tex:logo
-    \executeifdefined{\utfupper{\xmlflush{#1}}}{{\tttf ???}}
+    \executeifdefined{\xmlflush{#1}}{{\tttf ???}}
 \stopxmlsetups
 
 %%% This is a way of having a cover image
