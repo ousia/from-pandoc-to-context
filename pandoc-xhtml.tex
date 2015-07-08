@@ -249,7 +249,10 @@
 \stopxmlsetups
 
 \startxmlsetups xml:frontmatter
-    \def\TOC_Title{\startmode[*en]\title{Contents}\stopmode\startmode[*es]\title{Sumario}\stopmode\startmode[*deo]\title{Inhalt}\stopmode\startmode[*de]\title{Inhalt}\stopmode}
+    \def\TOC_Title{%
+    \startmode[*en,*uk]\title{Contents}\stopmode%
+    \startmode[*es]\title{Sumario}\stopmode%
+    \startmode[*deo,*de,*de-de,*de-at,*de-ch]\title{Inhalt}\stopmode}
     \startfirstmatter
     \TOC_Title\placelist[part,chapter]
     \stopfirstmatter
@@ -276,14 +279,22 @@
 \stopxmlsetups
 
 \startxmlsetups xml:juh:footnotes
-    \def\JUHFootnotes_Title{\startmode[*en]\chapter{Notes}\stopmode\startmode[*es]\chapter{Notas}\stopmode\startmode[*deo]\chapter{Anmerkungen}\stopmode\startmode[*de]\chapter{Anmerkungen}\stopmode\startmode[*fr]\chapter{Notes}\stopmode}
+    \def\JUHFootnotes_Title{%
+    \startmode[*en,*uk]\chapter{Notes}\stopmode%
+    \startmode[*es]\chapter{Notas}\stopmode%
+    \startmode[*deo,*de,*de-de,*de-at,*de-ch]\chapter{Anmerkungen}\stopmode%
+    \startmode[*fr]\chapter{Notes}\stopmode}
     \JUHFootnotes_Title\placefootnotes
 \stopxmlsetups
 
 \startxmlsetups xml:colophon
     \startbackmatter
     \startnotmode[nofootnotes,juh:footnotes]\startmode[endnotes]
-    \def\Footnotes_Title{\startmode[*en]\chapter{Notes}\stopmode\startmode[*es]\chapter{Notas}\stopmode\startmode[*deo]\chapter{Notizen}\stopmode\startmode[*de]\chapter{Notizen}\stopmode\startmode[*fr]\chapter{Notes}\stopmode}
+    \def\Footnotes_Title{%
+    \startmode[*en,*uk]\chapter{Notes}\stopmode%
+    \startmode[*es]\chapter{Notas}\stopmode%
+    \startmode[*deo,*de,*de-de,*de-at,*de-ch]\chapter{Anmerkungen}\stopmode%
+    \startmode[*fr]\chapter{Notes}\stopmode}
     \Footnotes_Title\placefootnotes
     \stopmode\stopnotmode
 
