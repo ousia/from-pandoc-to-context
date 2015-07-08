@@ -164,8 +164,8 @@
         {xml:dl_options}
 
     \xmlsetsetup{\xmldocument}
-        {jul:footnotes}
-        {xml:jul:footnotes}
+        {juh:footnotes}
+        {xml:juh:footnotes}
 \stopxmlsetups
 
 \xmlregistersetup{xml:pandoc}
@@ -275,14 +275,14 @@
     \xmlflush{#1}
 \stopxmlsetups
 
-\startxmlsetups xml:jul:footnotes
-    \def\JULFootnotes_Title{\startmode[*en]\chapter{Notes}\stopmode\startmode[*es]\chapter{Notas}\stopmode\startmode[*deo]\chapter{Notizen}\stopmode\startmode[*de]\chapter{Notizen}\stopmode\startmode[*fr]\chapter{Notes}\stopmode}
-    \JULFootnotes_Title\placefootnotes
+\startxmlsetups xml:juh:footnotes
+    \def\JUHFootnotes_Title{\startmode[*en]\chapter{Notes}\stopmode\startmode[*es]\chapter{Notas}\stopmode\startmode[*deo]\chapter{Notizen}\stopmode\startmode[*de]\chapter{Notizen}\stopmode\startmode[*fr]\chapter{Notes}\stopmode}
+    \JUHFootnotes_Title\placefootnotes
 \stopxmlsetups
 
 \startxmlsetups xml:colophon
     \startbackmatter
-    \startnotmode[nofootnotes,jul:footnotes]\startmode[endnotes]
+    \startnotmode[nofootnotes,juh:footnotes]\startmode[endnotes]
     \def\Footnotes_Title{\startmode[*en]\chapter{Notes}\stopmode\startmode[*es]\chapter{Notas}\stopmode\startmode[*deo]\chapter{Notizen}\stopmode\startmode[*de]\chapter{Notizen}\stopmode\startmode[*fr]\chapter{Notes}\stopmode}
     \Footnotes_Title\placefootnotes
     \stopmode\stopnotmode
