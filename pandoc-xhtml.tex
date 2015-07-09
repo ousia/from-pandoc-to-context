@@ -197,6 +197,7 @@
          keyword={\xmldoifelse{#1}{p[@class='publisher']/a}
                     {\xmltext{#1}{p[@class='publisher']/a}}
                     {\xmltext{#1}{p[@class='publisher']}}}]
+    \startnotmode[no-coverpage]
     \startcoverpagemakeup
         \setupbodyfont[svb]
         {\setupbodyfont[25pt]\sc \xmlconcat{#1}{/h2[contains(@class,'author')]}{\\}}
@@ -215,6 +216,7 @@
         \dontleavehmode\scale[width=.75\textwidth]{\xmltext{#1}{p[@class='publisher']}}
         \stopalign
     \stopcoverpagemakeup
+    \stopnotmode
 
     \starttitlepagemakeup
         \mbox{}\vfill
