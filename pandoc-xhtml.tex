@@ -358,7 +358,7 @@
 
 \startxmlsetups xml:blockquote
     %~ check both modes for mainlanguage and language \doifmodeelse{*en}{\blank\startnarrow\setupindenting[yes,next]\xmlflush{#1}\stopnarrow\blank}    {\blank\startnarrow\xmlflush{#1}\stopnarrow\blank}
-    \blank\startnarrow\xmlflush{#1}\stopnarrow\blank
+    \startblockquote\xmlflush{#1}\stopblockquote
 \stopxmlsetups
 
 \startxmlsetups xml:signaturedate
@@ -660,6 +660,13 @@
 
 \definedescription[description][hang=fit, width=fit, headstyle=em, align=justify, margin=yes]
 \definedescription[options][width=fit, headstyle=tt, align=justify, location=left, margin=yes]
+
+%%% These start/stop structures are created (defined) to avoid
+%%% crashes with the current setup. They need to be configured
+%%% (setup) when if we want to use them (otherwise we get only
+%%% defaults).
+
+\definestartstop[blockquote]
 
 %%% These makeups are created (defined) to avoid crashes with
 %%% the current setup. They need to be configured (setup)

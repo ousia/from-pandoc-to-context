@@ -318,26 +318,55 @@ utilities.sequencers.appendaction("aftercopyingcharacters","after","document.add
 
 %~ \setupnarrower[narrow][before=blank, after=blank]
 
-\setupnote
-    [footnote]
-    [way=bytext,
-     location=text,
-     split=verystrict,
-     scope=text,
-     align=strict,
-     rule=off,
-     numberstyle=\tf,
-     bodyfont=,
-     before=\vskip0pt,
-     textcommand={\hairspace\high},
-     before=\directsetup{setups:footnotes}]
+\startnotmode[endnotes]
+    \setupnote
+        [footnote]
+        [way=bytext,
+         split=verystrict,
+         scope=text,
+         align=strict,
+         rule=off,
+         numberstyle=\tf,
+         bodyfont=,
+         before=\vskip1em,
+         textcommand={\hairspace\high}]
 
-\setupnotation
-    [footnote]
-    [numbercommand=\tfxy,
-     numberconversion=numerals,
-     alternative=serried,
-     style=\tfxy]
+    \setupnotation
+        [footnote]
+        [numbercommand=\tfxy,
+         numberconversion=numerals,
+         alternative=serried,
+         style=\tfxy]
+\stopnotmode
+
+\startmode[endnotes]
+    \setupnote
+        [footnote]
+        [way=bytext,
+         location=text,
+         split=verystrict,
+         scope=text,
+         align=strict,
+         rule=off,
+         numberstyle=\tf,
+         bodyfont=,
+         before=\vskip0pt,
+         textcommand={\hairspace\high},
+         before=\directsetup{setups:footnotes}]
+
+    \setupnotation
+        [footnote]
+        [numbercommand=\tfxy,
+         numberconversion=numerals,
+         alternative=serried,
+         style=\tfxy]
+\stopmode
+
+
+\setupstartstop
+    [blockquote]
+    [before={\blank\startnarrow},
+     after={\stopnarrow\blank}]
 
 
 \setupreferencestructureprefix
