@@ -32,9 +32,34 @@ utilities.sequencers.appendaction("aftercopyingcharacters","after","document.add
     [strict]
 
 %~ \showframe\showgrid
+
+\startmode[letterbooklet]
+    \definepapersize
+        [letterbooklet]
+        [width= 7.12in,
+         height= 11in]
+
+    \setuppapersize
+        [letterbooklet]
+
+\setuplayout
+    [setups=*lessstrict,
+     backspace=2cm,
+     width=middle,
+     topspace=2cm,
+     bottomspace=1.25cm,
+     height=middle,
+     header=0cm,
+     footer=1.1cm]
+
+\setuptolerance
+    [tolerant]
+\stopmode
+
 \startmode[letter]
     \setuppapersize
         [letter]
+
 \setuplayout
     [setups=*lessstrict,
      backspace=2.18cm,
@@ -51,7 +76,7 @@ utilities.sequencers.appendaction("aftercopyingcharacters","after","document.add
     [spacing=packed]
 {\en \hyphenation{MacOS}}
 
-\startnotmode[letter]
+\startnotmode[letter,letterbooklet]
     \setuplayout
     [setups=*lessstrict,
      backspace=2.5cm,
@@ -67,7 +92,7 @@ utilities.sequencers.appendaction("aftercopyingcharacters","after","document.add
     \setup[reset]
     \widowpenalty=10000
     \clubpenalty=10000
-    \brokenpenalty=0
+    \brokenpenalty=1
 \stopsetups
 
 
@@ -155,13 +180,23 @@ utilities.sequencers.appendaction("aftercopyingcharacters","after","document.add
     [part]
     [align=center,
      page={pagebreak:part},
-     before={\mbox{}\vfill},
-     after={\vfill\mbox{}},
+     before={\dontleavehmode\vfill},
+     after={\vfill\dontleavehmode},
      number=no,
      placehead=yes,
      style=\tfc\addfs{section},
      header=empty,
      footer=empty]
+
+%~ \definehead[hiddentitle][chapter]
+
+%~ \setuphead
+    %~ [hiddentitle]
+    %~ [placehead=empty,
+     %~ incrementnumber=list,
+     %~ number=no,
+     %~ before=,
+     %~ after=]
 
 \setuphead
     [chapter,title]
@@ -279,8 +314,8 @@ utilities.sequencers.appendaction("aftercopyingcharacters","after","document.add
     [references.border]
 
 \placebookmarks
-    [part,chapter,section,subsection,subsubsection]
-    [part,chapter]
+    [part,chapter,hiddentitle,section,subsection,subsubsection]
+    [part,chapter,hiddentitle]
 
 \setupinteractionscreen
     [width=fit,
