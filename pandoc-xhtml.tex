@@ -219,7 +219,7 @@
     \stopnotmode
 
     \starttitlepagemakeup
-        \mbox{}\vfill
+        \vfill
 
         {\itd\xmltext{#1}{h1[@class='title']}\par}\blank[big]
         {\resetbreakpoints\itb\setupinterlinespace \xmltext{#1}{h1[@class='subtitle']}\par}\blank[3*big]
@@ -251,12 +251,9 @@
 \stopxmlsetups
 
 \startxmlsetups xml:frontmatter
-    \def\TOC_Title{%
-    \startmode[*en,*uk]\title{Contents}\stopmode%
-    \startmode[*es]\title{Sumario}\stopmode%
-    \startmode[*deo,*de,*de-de,*de-at,*de-ch]\title{Inhalt}\stopmode}
     \startfirstmatter
-    \TOC_Title\placelist[part,chapter]
+    \title{\headtext{content}}
+    \placelist[part,chapter]
     \stopfirstmatter
 
     \startfrontmatter
@@ -281,23 +278,23 @@
 \stopxmlsetups
 
 \startxmlsetups xml:juh:footnotes
-    \def\JUHFootnotes_Title{%
+    \def\JUHFootnotesTitle{%
     \startmode[*en,*uk]\chapter{Notes}\stopmode%
     \startmode[*es]\chapter{Notas}\stopmode%
     \startmode[*deo,*de,*de-de,*de-at,*de-ch]\chapter{Anmerkungen}\stopmode%
     \startmode[*fr]\chapter{Notes}\stopmode}
-    \JUHFootnotes_Title\placefootnotes
+    \JUHFootnotesTitle\placefootnotes
 \stopxmlsetups
 
 \startxmlsetups xml:colophon
     \startbackmatter
     \startnotmode[nofootnotes,juh:footnotes]\startmode[endnotes]
-    \def\Footnotes_Title{%
+    \def\FootnotesTitle{%
     \startmode[*en,*uk]\chapter{Notes}\stopmode%
     \startmode[*es]\chapter{Notas}\stopmode%
     \startmode[*deo,*de,*de-de,*de-at,*de-ch]\chapter{Anmerkungen}\stopmode%
     \startmode[*fr]\chapter{Notes}\stopmode}
-    \Footnotes_Title\placefootnotes
+    \FootnotesTitle\placefootnotes
     \stopmode\stopnotmode
 
     \startcolophonmakeup
@@ -410,7 +407,7 @@
 \stopxmlsetups
 
 \startxmlsetups xml:autolink
-    \url{\xmlflush{#1}}
+    \mypersonalurl{\xmlflush{#1}}
 \stopxmlsetups
 
 \startxmlsetups xml:footnote:set
@@ -611,7 +608,7 @@
 \stopxmlsetups
 
 \startxmlsetups xml:br
-     \\
+     \crlf
 \stopxmlsetups
 
 \startxmlsetups xml:sup
@@ -656,8 +653,8 @@
 
 %%% This a simple method to have interactive hyperlinks
 
-\def\url#1{\bgroup\tt\hw\goto{\hyphenatedurl{#1}}[url(#1)]\egroup}
-\def\href#1#2{\goto{#2} [url(#1)]}
+\def\mypersonalurl#1{\bgroup\tt\hw\goto{\hyphenatedurl{#1}}[url(#1)]\egroup}
+\unexpanded\def\href#1#2{\goto{#2} [url(#1)]}
 
 %%% Two samples for definition lists
 
