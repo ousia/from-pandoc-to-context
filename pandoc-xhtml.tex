@@ -287,7 +287,9 @@
 \stopxmlsetups
 
 \startxmlsetups xml:colophon
-    \doifnotmode{*backpart}{\startbackmatter}
+    \doifmodeelse{*backpart}
+        {\page[yes, header, footer, right]}
+        {\startbackmatter}
     \startnotmode[nofootnotes,juh:footnotes]\startmode[endnotes]
     \def\FootnotesTitle{%
     \startmode[*en,*uk]\chapter{Notes}\stopmode%
