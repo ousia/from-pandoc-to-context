@@ -325,7 +325,8 @@
 \stopxmlsetups
 
 \startxmlsetups xml:hidden:h1
-    \doifdefined{hiddentitle}{\hiddentitle{\xmlflush{#1}}}
+    \doifdefined{hiddentitle}
+    {\hiddentitle[\xmlattribute{#1}{..//div}{id}]{\xmlflush{#1}}}
 \stopxmlsetups
 
 \startxmlsetups xml:h2

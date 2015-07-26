@@ -1,5 +1,4 @@
 \startluacode
-
     function document.addfunnyhyphen(tfmdata)
         local underscore = utf.byte("_")
         local char       = tfmdata.characters[underscore]
@@ -10,15 +9,14 @@
             depth    = 0,
             commands = {
                 { "right", -char.width },
-                { "down", char.depth },
+                { "down", char.depth or 0 },
                 { "slot", 1, underscore },
             }
         }
     end
 
-
-utilities.sequencers.appendaction("aftercopyingcharacters","after","document.addfunnyhyphen")
-
+utilities.sequencers.appendaction("aftercopyingcharacters",
+"after","document.addfunnyhyphen")
 \stopluacode
 
 \definehyphenationfeatures
@@ -74,6 +72,7 @@ utilities.sequencers.appendaction("aftercopyingcharacters","after","document.add
 \setuplanguage
     [en]
     [spacing=packed]
+
 {\en \hyphenation{MacOS}}
 
 \startnotmode[letter,letterbooklet]
@@ -188,15 +187,17 @@ utilities.sequencers.appendaction("aftercopyingcharacters","after","document.add
      header=empty,
      footer=empty]
 
-%~ \definehead[hiddentitle][chapter]
+\definehead
+    [hiddentitle]
+    [chapter]
 
-%~ \setuphead
-    %~ [hiddentitle]
-    %~ [placehead=empty,
-     %~ incrementnumber=list,
-     %~ number=no,
-     %~ before=,
-     %~ after=]
+\setuphead
+    [hiddentitle]
+    [placehead=empty,
+     number=no,
+     before=,
+     after=,
+     page=,]
 
 \setuphead
     [chapter,title]
