@@ -199,6 +199,12 @@
                     {\xmltext{#1}{p[@class='publisher']}}}]
     \startnotmode[no-coverpage]
     \startcoverpagemakeup
+        \def\CoverPageTitle{%
+        \startmode[*en,*uk]\hiddentitle{[Cover page]}\stopmode%
+        \startmode[*es]\hiddentitle{[Portada]}\stopmode%
+        \startmode[*deo,*de,*de-de,*de-at,*de-ch]\hiddentitle{Titelseite}\stopmode%
+        }
+        \doifdefined{hiddentitle}{\CoverPageTitle}
         \setupbodyfont[svb]
         {\setupbodyfont[25pt]\sc \xmlconcat{#1}{/h2[contains(@class,'author')]}{\\}}
         \vfill
@@ -219,6 +225,12 @@
     \stopnotmode
 
     \starttitlepagemakeup
+        \def\TitlePage{%
+        \startmode[*en,*uk]\hiddentitle{[Cover page]}\stopmode%
+        \startmode[*es]\hiddentitle{[Título]}\stopmode%
+        %~ \startmode[*deo,*de,*de-de,*de-at,*de-ch]\hiddentitle{Titel}\stopmode%
+        }
+        \doifdefined{hiddentitle}{\TitlePage}
         \vfill
 
         {\itd\xmltext{#1}{h1[@class='title']}\par}\blank[big]
