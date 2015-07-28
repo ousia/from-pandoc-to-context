@@ -192,6 +192,7 @@
 \stopxmlsetups
 
 \startxmlsetups xml:titlepage
+    \startfirstmatter
     \setupinteraction
         [author={\xmlconcat{#1}{/h2[contains(@class,'author')]}{, }},
          keyword={\xmldoifelse{#1}{p[@class='publisher']/a}
@@ -202,7 +203,7 @@
         \def\CoverPageTitle{%
         \startmode[*en,*uk]\hiddentitle{[Cover page]}\stopmode%
         \startmode[*es]\hiddentitle{[Portada]}\stopmode%
-        \startmode[*deo,*de,*de-de,*de-at,*de-ch]\hiddentitle{Titelseite}\stopmode%
+        \startmode[*deo,*de,*de-de,*de-at,*de-ch]\hiddentitle{[Bildtitelseite]}\stopmode%
         }
         \doifdefined{hiddentitle}{\CoverPageTitle}
         \setupbodyfont[svb]
@@ -226,9 +227,9 @@
 
     \starttitlepagemakeup
         \def\TitlePage{%
-        \startmode[*en,*uk]\hiddentitle{[Cover page]}\stopmode%
+        \startmode[*en,*uk]\hiddentitle{[Title page]}\stopmode%
         \startmode[*es]\hiddentitle{[Título]}\stopmode%
-        %~ \startmode[*deo,*de,*de-de,*de-at,*de-ch]\hiddentitle{Titel}\stopmode%
+        \startmode[*deo,*de,*de-de,*de-at,*de-ch]\hiddentitle{[Titelseite]}\stopmode%
         }
         \doifdefined{hiddentitle}{\TitlePage}
         \vfill
