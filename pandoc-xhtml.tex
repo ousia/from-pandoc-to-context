@@ -282,11 +282,15 @@
 \stopxmlsetups
 
 \startxmlsetups xml:backmatter
+    \doifmode{*bodypart}{\stopbodymatter}
     \startbackmatter
     \xmlflush{#1}
 \stopxmlsetups
 
 \startxmlsetups xml:appendices
+    \doifmodeelse{*bodypart}
+        {\stopbodymatter}
+        {\doifmode{*backpart}{\stopbackmatter}}
     \startappendices
     \xmlflush{#1}
 \stopxmlsetups
@@ -301,10 +305,10 @@
 \stopxmlsetups
 
 \startxmlsetups xml:colophon
+    \doifmode{*bodypart}{\stopbodymatter}
     \doifmode{*appendix}{\stopappendices}
-    \doifmodeelse{*backpart}
-        {\page[yes, header, footer, right]}
-        {\startbackmatter}
+    \doifmode{*backpart}{\stopbackmatter}
+    \startlastmatter
     \startnotmode[nofootnotes,juh:footnotes]\startmode[endnotes]
     \def\FootnotesTitle{%
     \startmode[*en,*uk]\chapter{Notes}\stopmode%
@@ -317,7 +321,7 @@
     \startcolophonmakeup
     \xmlflush{#1}
     \stopcolophonmakeup
-    \stopbackmatter
+    \stoplastmatter
 \stopxmlsetups
 
 \startxmlsetups xml:div
