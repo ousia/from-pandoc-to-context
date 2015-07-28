@@ -264,6 +264,7 @@
 \stopxmlsetups
 
 \startxmlsetups xml:frontmatter
+    \doifmode{*whatcomesfirst}{\stopfirstmatter}
     \startfirstmatter
     \title{\headtext{content}}
     \placelist[part,chapter]
@@ -300,6 +301,7 @@
 \stopxmlsetups
 
 \startxmlsetups xml:colophon
+    \doifmode{*appendix}{\stopappendices}
     \doifmodeelse{*backpart}
         {\page[yes, header, footer, right]}
         {\startbackmatter}
