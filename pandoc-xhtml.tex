@@ -36,6 +36,10 @@
         {xml:lang}
 
     \xmlsetsetup{\xmldocument}
+        {[contains(@class,'smcp')]}
+        {xml:smallcaps}
+
+    \xmlsetsetup{\xmldocument}
         {[contains(@class,'part')]/h1}
         {xml:part}
 
@@ -404,6 +408,10 @@
 
 \startxmlsetups xml:b
     \bgroup\bf\xmlflush{#1}\egroup
+\stopxmlsetups
+
+\startxmlsetups xml:smallcaps
+    \bgroup\sc\xmlflush{#1}\egroup
 \stopxmlsetups
 
 \startxmlsetups xml:pre:code
