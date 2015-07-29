@@ -270,8 +270,10 @@
 \startxmlsetups xml:frontmatter
     \doifmode{*whatcomesfirst}{\stopfirstmatter}
     \startfirstmatter
+    \starttableofcontents
     \title{\headtext{content}}
     \placelist[part,chapter]
+    \stoptableofcontents
     \stopfirstmatter
 
     \startfrontmatter
