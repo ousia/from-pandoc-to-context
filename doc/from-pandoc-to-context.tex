@@ -422,7 +422,30 @@ utilities.sequencers.appendaction("aftercopyingcharacters",
 
 \setupsectionblock
     [lastmatter]
-    [page=no, after=\page]
+    [page=no,
+     after=\page]
+
+\startsectionblockenvironment[whatcomeslast]
+    \writebetweenlist
+        [chapter]
+        {{\blank[3*halfline]}}
+\stopsectionblockenvironment
+
+\definesectionblock
+    [tocpart]
+    [tableofcontents]
+    [number=no]
+
+\setupsectionblock
+    [tableofcontents]
+    [page=no,
+     after=\page]
+
+\startsectionblockenvironment[tocpart]
+    \setuppagenumbering[location=]
+    %~ \setupalign[middle]
+    \setupinterlinespace[line=2.8ex]
+\stopsectionblockenvironment
 
 \definesectionblock
     [whatcomesfirst]
@@ -430,15 +453,7 @@ utilities.sequencers.appendaction("aftercopyingcharacters",
 
 \setupsectionblock
     [firstmatter]
-    [page=pagebreak:
-    part, after=\page]
-
-\startsectionblockenvironment[whatcomesfirst]
-    \setuppagenumbering
-        [location=]
-    \setupinterlinespace
-        [line=2.8ex]
-\stopsectionblockenvironment
+    [page=no, after=\page]
 
 \setupsectionblock
     [frontpart]
