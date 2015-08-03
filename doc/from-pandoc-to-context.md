@@ -206,7 +206,7 @@ This wrapping division is a key feature to be able to format the layout for whol
 
 ### Hidden Titles
 
-Hidden titles are essential in some book sections. These sections provide information that has a separate page, but it lacks a title. One example would be a copyright information page.^[In this particular case, `pandoc` provides a method to do it, as discussed in [the appendix](#copyright-page).] Another would be an epigraph page.
+Hidden titles are essential in some book sections. These sections provide information that has a separate page, but it lacks a title. One example would be a copyright information page.^[In this particular case, `pandoc` provides a method to do it, as discussed in [the appendix](#adding-a-copyright-page).] Another would be an epigraph page.
 
 The code in the source document would be:
 
@@ -1565,7 +1565,7 @@ This document is a brief introduction to environments in <span class="tex-logo">
 
 See you in _A Single Source_. Coming to any device near you!
 
-# Adding a Copyright Page {.appendices #copyright-page}
+# Adding a Copyright Page {.appendices}
 
 `pandoc` has a `rights` field in its YAML metadata.[^yaml-rights]
 
@@ -1609,7 +1609,7 @@ CSS code for that page may be:
 
 `page-break-before: always` is a mandatory attribute, if you require a separate copyright page. Vertical margin after a page break doesn’t work—or at least, it doesn’t work with _Adobe Reader Mobile_. This is the reason why `padding-top` should be specified.
 
-# [Colophon] {.hidden #colophon}
+# [Colophon] {.hidden}
 
 This book was generated with `pandoc` (<http://pandoc.org/>) and typeset with <span class="tex-logo">ConTeXt</span> (<http://contextgarden.net/>).
 
