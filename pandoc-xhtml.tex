@@ -104,6 +104,10 @@
         {xml:signaturedate}
 
     \xmlsetsetup{\xmldocument}
+        {[@class='signature-author']}
+        {xml:signatureauthor}
+
+    \xmlsetsetup{\xmldocument}
         {span[@label or contains(@class,'tex\letterpercent-logo')]}
         {xml:tex:logo}
 
@@ -166,6 +170,14 @@
     \xmlsetsetup{\xmldocument}
         {div[contains(@class,'options')]/dl/dl}
         {xml:dl_options}
+
+    \xmlsetsetup{\xmldocument}
+        {div[contains(@class,'none')]/dl/dt}
+        {xml:dt_none}
+
+    \xmlsetsetup{\xmldocument}
+        {div[contains(@class,'none')]/dl/dl}
+        {xml:dl_none}
 
     \xmlsetsetup{\xmldocument}
         {juh:footnotes}
@@ -393,6 +405,13 @@
     \blank[samepage, big]
     \startalign[flushright]
         \xmlflush{#1}
+    \stopalign
+\stopxmlsetups
+
+\startxmlsetups xml:signatureauthor
+    \blank[samepage, big]
+    \startalign[flushright]
+        \bgroup\sc\xmlflush{#1}\egroup
     \stopalign
 \stopxmlsetups
 
@@ -635,6 +654,11 @@
     \stopoptions
 \stopxmlsetups
 
+\startxmlsetups xml:dd_none
+    \xmlflush{#1}
+    \stopnone
+\stopxmlsetups
+
 \startxmlsetups xml:hr
     \blank\hrule\blank
 \stopxmlsetups
@@ -692,6 +716,7 @@
 
 \definedescription[description][hang=fit, width=fit, headstyle=em, align=justify, margin=yes]
 \definedescription[options][hang=fit, width=fit, headstyle=tt, align=justify, location=left, margin=yes]
+\definedescription[none][width=fit, headstyle=, align=justify, location=left, margin=yes]
 
 %%% These start/stop structures are created (defined) to avoid
 %%% crashes with the current setup. They need to be configured
