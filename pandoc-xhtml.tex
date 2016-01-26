@@ -36,7 +36,7 @@
         {xml:lang}
 
     \xmlsetsetup{\xmldocument}
-        {[contains(@class,'smcp')]}
+        {[contains(@class,'smcp') or contains(@class,'author')]}
         {xml:smallcaps}
 
     \xmlsetsetup{\xmldocument}
@@ -96,7 +96,7 @@
         {xml:appendices}
 
     \xmlsetsetup{\xmldocument}
-        {[@id='colophon' or contains(@class,'colophon')]}
+        {[@id='colophon' or @id='colofón' or contains(@class,'colophon')]}
         {xml:colophon}
 
     \xmlsetsetup{\xmldocument}
@@ -754,6 +754,7 @@
     \let\it\space
     \let\la\space
     \let\deo\space
+    \let\sc\space
 \to \simplifiedcommands
 
 %%% the current setup. They need to be configured (setup)
