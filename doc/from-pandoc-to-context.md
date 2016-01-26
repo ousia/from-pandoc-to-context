@@ -18,7 +18,7 @@ This document is released to the public under the [_Creative Commons_ Attributio
 
 # [Dedication] {.hidden}
 
-Dedicated to Hans Hagen and John MacFarlarne.
+Dedicated to Hans Hagen and John MacFarlane.
 
 This tiny contribution is a small sign of my deep gratitude for their huge achievements.
 
@@ -112,7 +112,7 @@ Typewritten inline words will be hyphenated using an underscore instead of the s
 
 ## Acknowledgements
 
-John MacFarlarne is the leading developer of `pandoc`. I want to thank him for this excellent software. He also coordinates all efforts from other programers and users to improve `pandoc`. I would like to thank him and Matthew Pickering also for their help programing filters.
+John MacFarlane is the leading developer of `pandoc`. I want to thank him for this excellent software. He also coordinates all efforts from other programers and users to improve `pandoc`. I would like to thank him and Matthew Pickering also for their help programing filters.
 
 I could have never thought of going from `pandoc` to <span class="tex-logo">ConTeXt</span> without the extraordinary work of Hans Hagen. He develops this extraordinary tool for digital typesetting called <span class="tex-logo">ConTeXt</span>. And he has patiently replied all my questions about how to parse XML sources with <span class="tex-logo">ConTeXt</span>. I thank him for both.
 
