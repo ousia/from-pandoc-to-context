@@ -262,7 +262,7 @@
         \doifdefined{hiddentitle}{\TitlePage}
         \vfill
 
-        {\itd\xmltext{#1}{h1[@class='title']}\par}\blank[big]
+        {\itd\setupinterlinespace\xmltext{#1}{h1[@class='title']}\par}\blank[big]
         {\resetbreakpoints\itb\setupinterlinespace \xmltext{#1}{h1[@class='subtitle']}\par}\blank[3*big]
         {\sc \xmlconcat{#1}{/h2[contains(@class,'author')]}{\\}}
 
