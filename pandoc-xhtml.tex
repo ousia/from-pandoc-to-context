@@ -116,6 +116,10 @@
         {xml:internal:link}
 
     \xmlsetsetup{\xmldocument}
+        {[@class='hyphenatedword']} % for testing purposes
+        {xml:hyphenatedword}
+
+    \xmlsetsetup{\xmldocument}
         {a[@class='footnoteRef']}
         {xml:footnote:ref}
 
@@ -471,6 +475,10 @@
 
 \startxmlsetups xml:autolink
     \mypersonalurl{\xmlflush{#1}}
+\stopxmlsetups
+
+\startxmlsetups xml:hyphenatedword
+    \hyphenatedword{\xmlflush{#1}}
 \stopxmlsetups
 
 \startxmlsetups xml:footnote:set
