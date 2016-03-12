@@ -128,6 +128,10 @@
         {}
 
     \xmlsetsetup{\xmldocument}
+        {div[@class='centered']}
+        {xml:centeredblock}
+
+    \xmlsetsetup{\xmldocument}
         {a[@class='uri']}
         {xml:autolink}
 
@@ -479,6 +483,10 @@
 
 \startxmlsetups xml:hyphenatedword
     \hyphenatedword{\xmlflush{#1}}
+\stopxmlsetups
+
+\startxmlsetups xml:centeredblock
+    \startalign[center]\xmlflush{#1}\stopalign
 \stopxmlsetups
 
 \startxmlsetups xml:footnote:set
