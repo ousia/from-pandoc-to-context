@@ -84,7 +84,8 @@
         {xml:frontmatter}
 
     \xmlsetsetup{\xmldocument}
-        {[@id='bodymatter' or contains(@class,'bodymatter')]}
+        {[@id='bodymatter' or contains(@class,'bodymatter') or
+          @id='mainmatter' or contains(@class,'mainmatter')]}
         {xml:bodymatter}
 
     \xmlsetsetup{\xmldocument}
