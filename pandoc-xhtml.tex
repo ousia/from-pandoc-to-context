@@ -199,6 +199,50 @@
 
 \xmlregistersetup{xml:pandoc}
 
+\definehead
+    [hiddentitle]
+    [chapter]
+
+\setuphead
+    [hiddentitle]
+    [placehead=empty,
+     incrementnumber=list,
+     number=no,
+     before=,
+     after=,
+      page=,]
+
+\definemakeup
+    [coverpage]
+
+\definemakeup
+    [titlepage]
+
+\definemakeup
+    [copyright]
+
+\definemakeup
+    [colophon]
+
+\definemakeup
+    [dedication]
+
+\definemakeup
+    [epigraph]
+
+\definesectionblock
+    [whatcomeslast]
+    [lastmatter]
+
+\definesectionblock
+    [tocpart]
+    [tableofcontents]
+
+\definesectionblock
+    [whatcomesfirst]
+    [firstmatter]
+
+
 \startxmlsetups xml:html
     \mainlanguage[\xmlatt{#1}{lang}]
     \xmlflush{#1}
