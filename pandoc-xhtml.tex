@@ -283,9 +283,10 @@
         {\setupbodyfont[25pt]\sc \xmlconcat{#1}{/h2[contains(@class,'author')]}{\\}}
         \vfill
         \scale[width=\textwidth]{\bf \xmltext{#1}{h1[@class='title']}}
-
-        \blank[small]\startalign [flushright]
-        \dontleavehmode\scale[width=.75\textwidth]{\it \xmltext{#1}{h1[@class='subtitle']}}
+        \doiftext{\xmltext{#1}{h1[@class='subtitle']}}
+            {\par
+            \blank[small]\startalign [flushright]
+            \dontleavehmode\scale[width=.75\textwidth]{\it \xmltext{#1}{h1[@class='subtitle']}}}
         \stopalign
         \vfill
         \startalign[center]
@@ -306,11 +307,15 @@
         }
         \doifdefined{hiddentitle}{\TitlePage}
         \vfill
-
-        {\itd\setupinterlinespace\xmltext{#1}{h1[@class='title']}\par}\blank[big]
-        {\resetbreakpoints\itb\setupinterlinespace \xmltext{#1}{h1[@class='subtitle']}\par}\blank[3*big]
-        {\sc \xmlconcat{#1}{/h2[contains(@class,'author')]}{\\}}
-
+        {\itd\setupinterlinespace\xmltext{#1}{h1[@class='title']}
+                \par}\blank[big]
+        \doiftextelse{\xmltext{#1}{h1[@class='subtitle']}}{
+            {\resetbreakpoints\itb\setupinterlinespace \xmltext{#1}{h1[@class='subtitle']}\par}\blank[3*big]
+            {\sc \xmlconcat{#1}{/h2[contains(@class,'author')]}{\\}}
+        } {
+            \par\blank[big]
+            {\sc \xmlconcat{#1}{/h2[contains(@class,'author')]}{\\}}
+        }
         \vfill
         \xmltext{#1}{h3[@class='date']}
         \vfill
