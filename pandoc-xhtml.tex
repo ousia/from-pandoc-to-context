@@ -272,6 +272,7 @@
                     {\xmltext{#1}{p[@class='publisher']/a}}
                     {\xmltext{#1}{p[@class='publisher']}}}]
     \startnotmode[no-coverpage]
+    \startsetups[coverpage]
     \startcoverpagemakeup
         \def\CoverPageTitle{%
         \startmode[*en,*uk]\hiddentitle{[Cover page]}\stopmode%
@@ -280,13 +281,18 @@
         }
         \doifdefined{hiddentitle}{\CoverPageTitle}
         \setupbodyfont[svb]
-        {\setupbodyfont[25pt]\sc \xmlconcat{#1}{/h2[contains(@class,'author')]}{\\}}
+        {\setupbodyfont[25pt]\setupinterlinespace\sc
+        \getvariable{coverpage}{author}\par}
+        %~ \xmlconcat{#1}{/h2[contains(@class,'author')]}{\\}\par}
         \vfill
-        \scale[width=\textwidth]{\bf \xmltext{#1}{h1[@class='title']}}
+        \scale[width=\textwidth]{\bf \getvariable{coverpage}{title}}
+        %~ \scale[width=\textwidth]{\bf \xmltext{#1}{h1[@class='title']}}
         \doiftext{\xmltext{#1}{h1[@class='subtitle']}}
             {\par
             \blank[small]\startalign [flushright]
-            \dontleavehmode\scale[width=.75\textwidth]{\it \xmltext{#1}{h1[@class='subtitle']}}}
+            \dontleavehmode\scale[width=.75\textwidth]%
+                {\em \getvariable{coverpage}{subtitle}}}
+                %~ {\em \xmltext{#1}{h1[@class='subtitle']}}}
         \stopalign
         \vfill
         \startalign[center]
@@ -294,11 +300,22 @@
         \stopalign
         \vfill
         \startalign[flushright]
-        \dontleavehmode\scale[width=.75\textwidth]{\xmltext{#1}{p[@class='publisher']}}
+        \dontleavehmode\scale[width=.75\textwidth]%
+            {\getvariable{coverpage}{subtitle}}
+            %~ {\xmltext{#1}{p[@class='publisher']}}
         \stopalign
     \stopcoverpagemakeup
+    \stopsetups
+    \setvariable{coverpage}{set}{\texsetup{coverpage}}
+    \setvariables[coverpage]
+        [title={\xmltext{#1}{h1[@class='title']}},
+         subtitle={\xmltext{#1}{h1[@class='subtitle']}},
+         author={\xmlconcat{#1}{/h2[contains(@class,'author')]}{\\}},
+         date={\xmltext{#1}{h3[@class='date']}},
+         publisher={\xmltext{#1}{p[@class='publisher']}}]
     \stopnotmode
 
+    \startsetups[titlepage]
     \starttitlepagemakeup
         \def\TitlePage{%
         \startmode[*en,*uk]\hiddentitle{[Title page]}\stopmode%
@@ -307,20 +324,36 @@
         }
         \doifdefined{hiddentitle}{\TitlePage}
         \vfill
-        {\itd\setupinterlinespace\xmltext{#1}{h1[@class='title']}
+        {\itd\setupinterlinespace\getvariable{titlepage}{title}
+        %~ {\itd\setupinterlinespace\xmltext{#1}{h1[@class='title']}
                 \par}\blank[big]
-        \doiftextelse{\xmltext{#1}{h1[@class='subtitle']}}{
-            {\resetbreakpoints\itb\setupinterlinespace \xmltext{#1}{h1[@class='subtitle']}\par}\blank[3*big]
-            {\sc \xmlconcat{#1}{/h2[contains(@class,'author')]}{\\}}
+        \doiftextelse{\getvariable{titlepage}{subtitle}}{
+        %~ \doiftextelse{\xmltext{#1}{h1[@class='subtitle']}}{
+            {\resetbreakpoints\itb\setupinterlinespace
+            \getvariable{titlepage}{subtitle}\par}\blank[3*big]
+            %~ \xmltext{#1}{h1[@class='subtitle']}\par}\blank[3*big]
+            {\sc \getvariable{titlepage}{author}}
+            %~ {\sc \xmlconcat{#1}{/h2[contains(@class,'author')]}{\\}}
         } {
             \par\blank[big]
-            {\sc \xmlconcat{#1}{/h2[contains(@class,'author')]}{\\}}
+            {\sc \getvariable{titlepage}{author}}
+            %~ {\sc \xmlconcat{#1}{/h2[contains(@class,'author')]}{\\}}
         }
         \vfill
-        \xmltext{#1}{h3[@class='date']}
+        \getvariable{titlepage}{date}
+        %~ \xmltext{#1}{h3[@class='date']}
         \vfill
-        \xmltext{#1}{p[@class='publisher']}
+        \getvariable{titlepage}{publisher}
+        %~ \xmltext{#1}{p[@class='publisher']}
     \stoptitlepagemakeup
+    \stopsetups
+    \setvariable{titlepage}{set}{\texsetup{titlepage}}
+    \setvariables[titlepage]
+        [title={\xmltext{#1}{h1[@class='title']}},
+         subtitle={\xmltext{#1}{h1[@class='subtitle']}},
+         author={\xmlconcat{#1}{/h2[contains(@class,'author')]}{\\}},
+         date={\xmltext{#1}{h3[@class='date']}},
+         publisher={\xmltext{#1}{p[@class='publisher']}}]
 \stopxmlsetups
 
 \startxmlsetups xml:rights
