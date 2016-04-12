@@ -65,7 +65,7 @@
 
     \xmlsetsetup{\xmldocument}
         {[@id='header']}
-        {xml:titlepage}
+        {xml:titlepages}
 
     \xmlsetsetup{\xmldocument}
         {[@id='copyright' or contains(@class,'rights') or contains(@class,'copyright')]}
@@ -195,6 +195,14 @@
     \xmlsetsetup{\xmldocument}
         {juh:footnotes}
         {xml:juh:footnotes}
+
+    \xmlsetsetup{\xmldocument}
+        {[contains(@class,'hidden') and contains(@class,'pagebreak')]/h1}
+        {xml:hidden:pagebreak:h1}
+
+    \xmlsetsetup{\xmldocument}
+        {[contains(@class,'foreignlanguage')]/blockquote}
+        {xml:foreign:blockquote}
 \stopxmlsetups
 
 \xmlregistersetup{xml:pandoc}
@@ -264,7 +272,7 @@
     \xmlflush{#1}
 \stopxmlsetups
 
-\startxmlsetups xml:titlepage
+\startxmlsetups xml:titlepages
     \startfirstmatter
     \setupinteraction
         [author={\xmlconcat{#1}{/h2[contains(@class,'author')]}{, }},
@@ -494,6 +502,14 @@
 \startxmlsetups xml:blockquote
     %~ check both modes for mainlanguage and language \doifmodeelse{*en}{\blank\startnarrow\setupindenting[yes,next]\xmlflush{#1}\stopnarrow\blank}    {\blank\startnarrow\xmlflush{#1}\stopnarrow\blank}
     \startblockquote\xmlflush{#1}\stopblockquote
+\stopxmlsetups
+
+\startxmlsetups xml:hidden:pagebreak:h1
+    \page[yes, header, footer, right]
+\stopxmlsetups
+
+\startxmlsetups xml:foreign:blockquote
+    \startblockquote\em\xmlflush{#1}\stopblockquote
 \stopxmlsetups
 
 \startxmlsetups xml:signaturedate
