@@ -133,15 +133,19 @@
         {}
 
     \xmlsetsetup{\xmldocument}
-        {div[@class='centered']}
+        {div[contains(@class,'no\letterpercent-indent')]}
+        {xml:no:indent}
+
+    \xmlsetsetup{\xmldocument}
+        {div[contains(@class,'centered')]}
         {xml:centeredblock}
 
     \xmlsetsetup{\xmldocument}
-        {div[@class='right-align']}
+        {div[contains(@class,'right\letterpercent-align')]}
         {xml:rightalignblock}
 
     \xmlsetsetup{\xmldocument}
-        {div[@class='left-align']}
+        {div[contains(@class,'left\letterpercent-align')]}
         {xml:leftalignblock}
 
     \xmlsetsetup{\xmldocument}
@@ -157,7 +161,7 @@
         {}
 
     \xmlsetsetup{\xmldocument}
-        {[contains(@class,'tex-logo')]/(sup|sub)}
+        {[contains(@class,'tex\letterpercent-logo')]/(sup|sub)}
         {xml:texlogo:sup:sub}
 
     \xmlsetsetup{\xmldocument}
@@ -520,6 +524,10 @@
     \startblockquote\em\xmlflush{#1}\stopblockquote
 \stopxmlsetups
 
+\startxmlsetups xml:no:indent
+    \start\setupindenting[no]\xmlflush{#1}\stop
+\stopxmlsetups
+
 \startxmlsetups xml:signaturedate
     \blank[samepage, big]
     \startalign[flushright]
@@ -602,7 +610,7 @@
 \stopxmlsetups
 
 \startxmlsetups xml:leftalignblock
-    \startalign[right]\setupindenting[no]
+    \startalign[right]
         \xmlflush{#1}
     \stopalign
 \stopxmlsetups
