@@ -109,7 +109,7 @@
         {xml:signatureauthor}
 
     \xmlsetsetup{\xmldocument}
-        {span[@label or contains(@class,'tex\letterpercent-logo')]}
+        {span[@label or contains(@class,'tex-logo')]}
         {xml:tex:logo}
 
     \xmlsetsetup{\xmldocument}
@@ -137,6 +137,14 @@
         {xml:centeredblock}
 
     \xmlsetsetup{\xmldocument}
+        {div[@class='right-align']}
+        {xml:rightalignblock}
+
+    \xmlsetsetup{\xmldocument}
+        {div[@class='left-align']}
+        {xml:leftalignblock}
+
+    \xmlsetsetup{\xmldocument}
         {a[@class='uri']}
         {xml:autolink}
 
@@ -149,7 +157,7 @@
         {}
 
     \xmlsetsetup{\xmldocument}
-        {[contains(@class,'tex\letterpercent-logo')]/(sup|sub)}
+        {[contains(@class,'tex-logo')]/(sup|sub)}
         {xml:texlogo:sup:sub}
 
     \xmlsetsetup{\xmldocument}
@@ -591,6 +599,16 @@
 
 \startxmlsetups xml:centeredblock
     \startalign[center]\xmlflush{#1}\stopalign
+\stopxmlsetups
+
+\startxmlsetups xml:leftalignblock
+    \startalign[right]\setupindenting[no]
+        \xmlflush{#1}
+    \stopalign
+\stopxmlsetups
+
+\startxmlsetups xml:rightalignblock
+    \startalign[left]\xmlflush{#1}\stopalign
 \stopxmlsetups
 
 \startxmlsetups xml:footnote:set
