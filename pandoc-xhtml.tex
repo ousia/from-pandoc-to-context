@@ -109,7 +109,7 @@
         {xml:signatureauthor}
 
     \xmlsetsetup{\xmldocument}
-        {span[@label or contains(@class,'tex-logo')]}
+        {span[@label or contains(@class,'tex\letterpercent-logo')]}
         {xml:tex:logo}
 
     \xmlsetsetup{\xmldocument}
@@ -133,10 +133,6 @@
         {}
 
     \xmlsetsetup{\xmldocument}
-        {div[contains(@class,'no\letterpercent-indent')]}
-        {xml:no:indent}
-
-    \xmlsetsetup{\xmldocument}
         {div[contains(@class,'centered')]}
         {xml:centeredblock}
 
@@ -147,6 +143,10 @@
     \xmlsetsetup{\xmldocument}
         {div[contains(@class,'left\letterpercent-align')]}
         {xml:leftalignblock}
+
+    \xmlsetsetup{\xmldocument}
+        {div[contains(@class,'no\letterpercent-indent')]}
+        {xml:no:indent}
 
     \xmlsetsetup{\xmldocument}
         {a[@class='uri']}
