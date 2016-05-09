@@ -585,7 +585,7 @@
 \stopxmlsetups
 
 \startxmlsetups xml:autolink
-    \mypersonalurl{\xmlflush{#1}}
+    \mypersonalurl{\xmlatt{#1}{href}}{\xmlflush{#1}}
 \stopxmlsetups
 
 \startxmlsetups xml:testlanguage
@@ -867,7 +867,7 @@
 
 %%% This a simple method to have interactive hyperlinks
 
-\def\mypersonalurl#1{\bgroup\tt\hw\goto{\hyphenatedurl{#1}}[url(#1)]\egroup}
+\unexpanded\def\mypersonalurl#1#2{\bgroup\tt\hw\goto{\hyphenatedurl{#2}}[url(#1)]\egroup}
 \unexpanded\def\href#1#2{\goto{#2} [url(#1)]}
 
 %%% Two samples for definition lists
