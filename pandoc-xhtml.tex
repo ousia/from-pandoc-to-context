@@ -895,26 +895,10 @@
 \definemakeup[colophon]
 
 %%% This command removes unwanted code from bookmarks.
+%%% Just learnt right now in a message from Hans
+%%% to the ConTeXt mailing list
 
-\appendtoks
-    \let\em\space
-    \let\tt\space
-    \let\ss\space
-    \let\bgroup\space
-    \let\egroup\space
-    \let\sethyphenationfeatures\space
-    \let\language\space
-    \let\en\space
-    \let\agr\space
-    \let\es\space
-    \let\de\space
-    \let\fr\space
-    \let\it\space
-    \let\la\space
-    \let\deo\space
-    \let\sc\space
-    \let\crlf\space
-\to \simplifiedcommands
+\enabledirectives[references.bookmarks.preroll]
 
 %%% the current setup. They need to be configured (setup)
 %%% when if we want to use them (otherwise we get only defaults).
