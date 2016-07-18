@@ -899,6 +899,10 @@
 %%% to the ConTeXt mailing list
 
 \enabledirectives[references.bookmarks.preroll]
+\enabledirectives[references.identity.preroll]
+\appendtoks\def\TeX{TeX}\to\everypreroll
+\appendtoks\def\ConTeXt{ConTeXt}\to\everypreroll
+\appendtoks\def\LaTeX{LaTeX}\to\everypreroll
 
 %%% the current setup. They need to be configured (setup)
 %%% when if we want to use them (otherwise we get only defaults).
