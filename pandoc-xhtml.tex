@@ -36,7 +36,7 @@
         {xml:lang}
 
     \xmlsetsetup{\xmldocument}
-        {[contains(@class,'smcp') or contains(@class,'author')]}
+        {span[contains(@class,'smcp') or contains(@class,'author')]}
         {xml:smallcaps}
 
     \xmlsetsetup{\xmldocument}
@@ -899,7 +899,6 @@
 %%% to the ConTeXt mailing list
 
 \enabledirectives[references.bookmarks.preroll]
-\enabledirectives[references.identity.preroll]
 \appendtoks\def\TeX{TeX}\to\everypreroll
 \appendtoks\def\ConTeXt{ConTeXt}\to\everypreroll
 \appendtoks\def\LaTeX{LaTeX}\to\everypreroll
