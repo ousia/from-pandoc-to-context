@@ -303,16 +303,13 @@
         \setupbodyfont[svb]
         {\setupbodyfont[25pt]\setupinterlinespace\sc
         \getvariable{coverpage}{author}\par}
-        %~ \xmlconcat{#1}{/h2[contains(@class,'author')]}{\\}\par}
         \vfill
         \scale[width=\textwidth]{\bf \getvariable{coverpage}{title}}
-        %~ \scale[width=\textwidth]{\bf \xmltext{#1}{h1[@class='title']}}
         \doiftext{\xmltext{#1}{h1[@class='subtitle']}}
             {\par
             \blank[small]\startalign [flushright]
             \dontleavehmode\scale[width=.75\textwidth]%
                 {\em \getvariable{coverpage}{subtitle}}}
-                %~ {\em \xmltext{#1}{h1[@class='subtitle']}}}
         \stopalign
         \vfill
         \startalign[center]
@@ -322,7 +319,6 @@
         \startalign[flushright]
         \dontleavehmode\scale[width=.75\textwidth]%
             {\getvariable{coverpage}{publisher}}
-            %~ {\xmltext{#1}{p[@class='publisher']}}
         \stopalign
     \stopcoverpagemakeup
     \stopsetups
@@ -345,26 +341,19 @@
         \doifdefined{hiddentitle}{\TitlePage}
         \vfill
         {\itd\setupinterlinespace\getvariable{titlepage}{title}
-        %~ {\itd\setupinterlinespace\xmltext{#1}{h1[@class='title']}
                 \par}\blank[big]
         \doiftextelse{\getvariable{titlepage}{subtitle}}{
-        %~ \doiftextelse{\xmltext{#1}{h1[@class='subtitle']}}{
             {\resetbreakpoints\itb\setupinterlinespace
             \getvariable{titlepage}{subtitle}\par}\blank[3*big]
-            %~ \xmltext{#1}{h1[@class='subtitle']}\par}\blank[3*big]
             {\sc \getvariable{titlepage}{author}}
-            %~ {\sc \xmlconcat{#1}{/h2[contains(@class,'author')]}{\\}}
         } {
             \par\blank[big]
             {\sc \getvariable{titlepage}{author}}
-            %~ {\sc \xmlconcat{#1}{/h2[contains(@class,'author')]}{\\}}
         }
         \vfill
         \getvariable{titlepage}{date}
-        %~ \xmltext{#1}{h3[@class='date']}
         \vfill
         \getvariable{titlepage}{publisher}
-        %~ \xmltext{#1}{p[@class='publisher']}
     \stoptitlepagemakeup
     \stopsetups
     \setvariable{titlepage}{set}{\texsetup{titlepage}}
