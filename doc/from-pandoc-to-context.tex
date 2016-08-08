@@ -249,14 +249,15 @@ utilities.sequencers.appendaction("aftercopyingcharacters",
     [TeXspace]
     [option=TEX,space=on]
 
-\def\ConTeXt{Con\-\TeX{}t}
+%~ \def\ConTeXt{Con\-\TeX{}t}
 
 
 \definefallbackfamily
     [mainface]
     [rm]
     [GFS Didot]
-    [preset=range:greek]
+    [preset=range:greek,
+     force=yes]
 
 \definefontfamily
     [mainface]
@@ -278,7 +279,14 @@ utilities.sequencers.appendaction("aftercopyingcharacters",
     [tt]
     [Cousine]
     [features=none,
-     scale=0.875]
+     rscale=0.875]
+
+\definefontfamily
+    [mainface]
+    [hw]
+    [Cousine]
+    [features=none,
+     rscale=0.875]
 
 \definefontfamily
     [ornamenta]
@@ -515,6 +523,8 @@ utilities.sequencers.appendaction("aftercopyingcharacters",
         [line=2.85ex]
     \setupindenting
         [always, 0pt]
+    \setupalign
+        [hanging, hz]
 \stopsetups
 
 \startsetups[setups:dedication]
