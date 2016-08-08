@@ -26,7 +26,7 @@ This tiny contribution is a small sign of my deep gratitude for their huge achie
 
 “If I have seen further it is by standing on the shoulders of giants.”
 
-(Isaac Newton, _Letter to R. Hooke_)
+(<span class="author">Newton</span>, _Letter to R. Hooke_)
 
 # Foreword {.frontmatter}
 
@@ -252,9 +252,6 @@ A sample for a colophon would be:^[Nothing prevents from having both `{.hidden #
 # Colophon {#colophon}
 
 This book was generated with `pandoc` (<http://pandoc.org/>) and typeset with <span class="tex-logo">ConTeXt</span> (<http://contextgarden.net/>).
-
-_<span class="tex-logo">TeX</span> Gyre Pagella_, _GFS Didot_ and _Cousine_ were the selected typefaces.
-
 ```
 
 With the `--section-divs` argument, the whole section—part, chapter, section, or any heading—will be wrapped in a block division element. So you could format anything in that section.
@@ -1559,7 +1556,7 @@ This document describes a method to typeset XHTML sources from `pandoc` with <sp
 
 In my personal opinion, going from `pandoc` to <span class="tex-logo">ConTeXt</span> is the easiest and most powerful way to generate high–quality PDF documents from light–weight markup sources. If the description contained here has caught your eye, you can try and judge by yourself.
 
-Environments are used to typeset critical editions from TEI XML sources.^[See Thomas A. Schmitz, <span lang="de">_Kritische Editionen mit TEI XML und <span class="tex-logo">ConTeXt</span>_</span>, in <http://www.dante.de/events/Archiv/dante2011/programm/vortraege/folien-ts.pdf>.] Since critical editions are rather complex text structures, I think that this shows that <span class="tex-logo">ConTeXt</span> may be powerful enough to typeset most—if not all—documents generated from _Markdown_ sources.
+Environments are used to typeset critical editions from TEI XML sources.^[See <span class="author">Th. A. Schmitz</span>, <span lang="de">_Kritische Editionen mit TEI XML und <span class="tex-logo">ConTeXt</span>_</span>, in <http://www.dante.de/events/Archiv/dante2011/programm/vortraege/folien-ts.pdf>.] Since critical editions are rather complex text structures, I think that this shows that <span class="tex-logo">ConTeXt</span> may be powerful enough to typeset most—if not all—documents generated from _Markdown_ sources.
 
 This document is a brief introduction to environments in <span class="tex-logo">ConTeXt</span>. I want to describe a more general method of electronic editing with free–software tools. Since `pandoc` is already well documented, <span class="tex-logo">ConTeXt</span> environments are the other key for this method. With a real example, I want to describe the whole picture of digital edition with professional standards.
 
@@ -1613,7 +1610,7 @@ CSS code for that page may be:
 
 This book was generated with `pandoc` (<http://pandoc.org/>) and typeset with <span class="tex-logo">ConTeXt</span> (<http://contextgarden.net/>).
 
-_<span class="tex-logo">TeX</span> Gyre Pagella_, _GFS Didot_ and _Cousine_ were the selected typefaces.
+_<span class="tex-logo">TeX</span> Gyre Pagella_, _GFS Didot_ and _Cousine_ were the selected typefaces for the PDF document. [_Tempestiva_](http://www.typographica.tk/#tempestiva) was the deployed font family in the ePub document.
 
 
 [^minimal-hyphenations]: A minimal sample shows the issue:

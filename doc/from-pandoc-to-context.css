@@ -1,23 +1,27 @@
+@font-face {font-family: tempestiva; font-weight: normal; font-style: normal; src:url("Tempestiva-Regular.otf");}
+@font-face {font-family: tempestiva; font-weight: normal; font-style: italic; src:url("Tempestiva-Italic.otf");}
+@font-face {font-family: tempestivasc; font-weight: normal; font-style: normal; src:url("TempestivaSC-Regular.otf");}
+
 body {
-    margin: 2%;
+    margin: 5%;
     text-align: justify;
-    font-family: FreeSerif, serif;
+    font-family: tempestiva, Tempestiva;
     widows: 2;
     orphans: 2;
     }
 
 ol {
-    font-family: serif;
+    font-family: tempestiva, Tempestiva;
     }
 
 ul {
-    font-family: serif;
+    font-family: tempestiva, Tempestiva;
     list-style-type: disc;
     }
 
 ul ul {
     list-style-type: circle;
-    font-family: serif;
+    font-family: tempestiva, Tempestiva;
     }
 
 pre {
@@ -115,7 +119,7 @@ h2.author {
     text-align: center;
     font-weight: normal;
     font-style: normal;
-    font-family: serifsc, serif;
+    font-family: tempestivasc, "Tempestiva SC";
     page-break-before: avoid;
     }
 
@@ -153,7 +157,7 @@ p {
     }
 
 .footnotes li {
-    margin: 0% 0% 2% 0%;
+    margin: 0% 0% 5% 0%;
     }
 
 li p, blockquote > p {
@@ -193,7 +197,7 @@ strong {
 .dedication, #dedication {
     padding-top: 15%;
     margin-right: 5%;
-    margin-left: 50%;
+    margin-left: 25%;
     }
 
 .dedication p, #dedication p {
@@ -286,7 +290,11 @@ p.rights, .hidden>h1 {
 
 .rights, .footnotes > ol > li {
     page-break-before: always;
-    padding-top: 2%;
+    padding-top: 5%;
+    }
+
+.smcp, .author {
+    font-family: tempestivasc, "Tempestiva SC";
     }
 
 h1, h2, h3, h4, h5, h6, code, .uri a, a.uri, a.email, .signature-date > p {
@@ -294,14 +302,9 @@ h1, h2, h3, h4, h5, h6, code, .uri a, a.uri, a.email, .signature-date > p {
     -webkit-hyphens: none;
     }
 
-.smcp{
-    font-variant: small-caps;
-    font-family: serifsc, serif;
-    }
-
 .part > h1 {
     margin-top: 50%;
-    font-family: serif;
+    font-family: tempestiva, Tempestiva;
     font-style: normal;
     }
 
